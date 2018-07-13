@@ -1,0 +1,35 @@
+page-profile {
+
+    .item-md ion-avatar img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 150px;
+        height: 150px;
+        margin: auto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .badge-count {
+        font-size: 2rem;
+    }
+
+    .first-line {
+        padding-bottom: 0px;
+    }
+
+    .next-line {
+        padding: 0px;
+    }
+}
