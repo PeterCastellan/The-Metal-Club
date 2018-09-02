@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ClassicRockPage } from '../classic-rock/classic-rock';
 
 @Component({
   selector: 'page-styles',
@@ -14,4 +15,8 @@ export class StylesPage {
     console.log('ionViewDidLoad StylesPage');
   }
 
+  openClassicRock() {
+    console.log("Clicou em Classic Rock");
+    this.navCtrl.push(ClassicRockPage);
+  }
 }

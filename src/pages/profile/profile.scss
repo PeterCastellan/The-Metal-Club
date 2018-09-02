@@ -32,4 +32,17 @@ page-profile {
     .next-line {
         padding: 0px;
     }
+
+    .song-info {
+        height: 140px;;
+    }
+
+    .ion-md-arrow-forward:before {
+        content: "\f287";
+        color: black;
+    }
+
+    .item-song {
+        padding-left: 0px;
+    }
 }

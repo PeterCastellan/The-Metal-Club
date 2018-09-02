@@ -1,0 +1,12 @@
+page-my-friends {
+
+    .item-md ion-avatar img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .ion-md-arrow-forward:before {
+        content: "\f287";
+        color: black;
+    }
+}
