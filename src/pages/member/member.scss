@@ -1,23 +1,78 @@
 page-member {
-    .bola {
+    
+    .item-md ion-avatar img {
         border-radius: 50%;
-        display: inline-block;
-        height: 100px;
-        width: 100px;
-        border: 1px solid #000000;
-        background-color: #FFFF00;
-        text-align: center;
-        font-size: 2.5rem;
+        overflow: hidden;
+        width: 150px;
+        height: 150px;
+        margin: auto;
     }
 
-    .circulo {
-        height: 80px;
-        width: 80px;
-        display: table-cell;
+    h1 {
         text-align: center;
-        font-size:3.0rem;
-        vertical-align: middle;
-        border-radius: 50%;
-        background: #FFC917;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .badge-count {
+        font-size: 2rem;
+    }
+
+    .first-line {
+        padding-bottom: 0px;
+    }
+
+    .next-line {
+        padding: 0px;
+    }
+
+    .song-info {
+        height: 115px;;
+    }
+
+    .ion-md-arrow-forward:before {
+        content: "\f287";
+        color: black;
+    }
+
+    .item-song {
+        padding-left: 0px;
+    }
+
+    .scrolling-wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        height: 150px;
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .card {
+          display: inline-block;
+          width: 100px;
+          height: 150px;
+          margin-right: 10px;
+        }
+    }
+/*
+    .fab-icon {
+        ion-icon {
+            ::before {
+                color: black;
+            }
+        }
+    }
+*/
+
+    .ion-md-person-add:before {
+    color: black;
     }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MemberPage } from '../member/member';
 import { MyFriendsPage } from '../my-friends/my-friends';
+import { MyRankPage } from '../my-rank/my-rank';
 
 @Component({
   selector: 'page-profile',
@@ -16,8 +16,8 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
-  goToMember() {
-    this.navCtrl.push(MemberPage);
+  goToMyRank() {
+    this.navCtrl.push(MyRankPage);
   }
 
   goToMyFriends() {

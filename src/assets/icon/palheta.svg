@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.015 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(25,24,24,0.36);
+        stroke: #95989a;
+      }
+    </style>
+  </defs>
+  <path id="palheta" data-name="palheta" class="cls-1" d="M1262.086,732.183c-1.751,0-13.661-15.063-8.407-20.317s11.91-4.554,16.464,0S1263.837,732.183,1262.086,732.183Z" transform="translate(-1251.789 -707.682)"/>
+</svg>

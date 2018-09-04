@@ -1,0 +1,18 @@
+page-album {
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        //width: 50%;
+    }
+
+    .item-song {
+        padding-left: 0px;
+    }
+
+    ion-icon.icon.icon-md.ion-md-custom-palheta.item-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+}

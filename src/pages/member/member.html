@@ -9,34 +9,160 @@
 
 <ion-content padding>
 
-  <div style="margin: 0 auto; width: 80px; margin-top: 50px">
-    <p class="circulo">#25</p>
-  </div>
-  <h1 text-center>Danilo Concilio</h1>
+  <ion-fab top right edge>
+    <button ion-fab><ion-icon class="fab-icon" name="person-add"></ion-icon></button>
+  </ion-fab>
 
-  <br>
+  <ion-item>
+    <ion-avatar>
+      <img src="assets/imgs/profile_image.png" />
+    </ion-avatar>
+    <h1>Danilo Concilio</h1>
+    <p>Brazil, Male, 46 years</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <p class="badge-count">
+              <img src="assets/icon/badge_silver.png" /> 3
+            </p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="container">
+            <p class="badge-count">
+              <img src="assets/icon/badge_bronze.png" /> 10
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="first-line">
+          <div>
+            <p>
+              <img src="assets/icon/account-multiple.png" /> 77
+            </p>
+          </div>
+        </ion-col>
+        <ion-col class="first-line">
+          <div>
+            <p>
+              <img src="assets/icon/subtraction.png" /> 208
+            </p>
+          </div>
+        </ion-col>
+        <ion-col class="first-line">
+          <div>
+            <p>
+              <img src="assets/icon/music.png" /> 2884
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="next-line">
+          <p>
+            rated bands
+          </p>
+        </ion-col>
+        <ion-col class="next-line">
+          <p>
+            rated albuns
+          </p>
+        </ion-col>
+        <ion-col class="next-line">
+          <p>
+            rated songs
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!--
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="container">
+            <button ion-button color="primary" (click)="goToMyRank()">Member #25</button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="container">
+            <button ion-button color="primary" (click)="goToMyFriends()">My Friends</button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  -->
+  </ion-item>
+
+  <h2>Rated Songs</h2>
 
   <ion-list>
-    <ion-item>
-      <ion-icon name="custom-trophy" item-start></ion-icon>
-      #6 Hard Rock & AOR
+    <ion-item class="item-song">
+      <div>
+        <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
+        <div class="song-info">
+          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR RATE:
+          9.86
+        </div>
+      </div>
+      <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-icon name="custom-trophy" item-start></ion-icon>
-      #6 Hard Rock & AOR
+
+    <ion-item class="item-song">
+      <div>
+        <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
+        <div class="song-info">
+          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR RATE:
+          9.86
+        </div>
+      </div>
+      <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-icon name="custom-trophy" item-start></ion-icon>
-      #6 Hard Rock & AOR
+
+    <ion-item class="item-song">
+      <div>
+        <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
+        <div class="song-info">
+          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR RATE:
+          9.86
+        </div>
+      </div>
+      <ion-icon name="arrow-forward" item-end></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-icon name="custom-trophy" item-start></ion-icon>
-      #6 Hard Rock & AOR
-    </ion-item>
-    <ion-item>
-      <ion-icon name="custom-trophy" item-start></ion-icon>
-      #6 Hard Rock & AOR
-    </ion-item>
+
   </ion-list>
+
+  <h2>Highly Rated</h2>
+  <div class="scrolling-wrapper">
+    <div class="card" (click)="openBand()">
+      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 style="margin: 0px;">#1</h2>
+      <p style="margin: 0px;">Iron Maiden</p>
+    </div>
+    <div class="card" (click)="teste2()">
+      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 style="margin: 0px;">#1</h2>
+      <p style="margin: 0px;">Iron Maiden</p>
+    </div>
+    <div class="card" (click)="teste3()">
+      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 style="margin: 0px;">#1</h2>
+      <p style="margin: 0px;">Iron Maiden</p>
+    </div>
+    <div class="card" (click)="teste4()">
+      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 style="margin: 0px;">#1</h2>
+      <p style="margin: 0px;">Iron Maiden</p>
+    </div>
+    <div class="card">
+      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 style="margin: 0px;">#1</h2>
+      <p style="margin: 0px;">Iron Maiden</p>
+    </div>
+  </div>
 
 </ion-content>

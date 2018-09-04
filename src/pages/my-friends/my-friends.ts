@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { MemberPage } from '../member/member';
 
 @Component({
   selector: 'page-my-friends',
@@ -12,6 +13,10 @@ export class MyFriendsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyFriendsPage');
+  }
+
+  goToMember() {
+    this.navCtrl.push(MemberPage);
   }
 
 }

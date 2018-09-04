@@ -34,7 +34,7 @@ page-profile {
     }
 
     .song-info {
-        height: 140px;;
+        height: 115px;;
     }
 
     .ion-md-arrow-forward:before {
@@ -44,5 +44,22 @@ page-profile {
 
     .item-song {
         padding-left: 0px;
+    }
+
+    .scrolling-wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        height: 150px;
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .card {
+          display: inline-block;
+          width: 100px;
+          height: 150px;
+          margin-right: 10px;
+        }
     }
 }

@@ -20,6 +20,9 @@ import { ExtremeMetalPage } from '../pages/extreme-metal/extreme-metal';
 import { GothicMetalPage } from '../pages/gothic-metal/gothic-metal';
 import { HttpClientModule } from '@angular/common/http';
 import { MyFriendsPage } from '../pages/my-friends/my-friends';
+import { AlbumPage } from '../pages/album/album';
+import { BandPage } from '../pages/band/band';
+import { MyRankPage } from '../pages/my-rank/my-rank';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { MyFriendsPage } from '../pages/my-friends/my-friends';
     MemberPage,
     ExtremeMetalPage,
     GothicMetalPage,
-    MyFriendsPage
+    MyFriendsPage,
+    AlbumPage,
+    BandPage,
+    MyRankPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,10 @@ import { MyFriendsPage } from '../pages/my-friends/my-friends';
     MemberPage,
     ExtremeMetalPage,
     GothicMetalPage,
-    MyFriendsPage
+    MyFriendsPage,
+    AlbumPage,
+    BandPage,
+    MyRankPage
   ],
   providers: [
     StatusBar,

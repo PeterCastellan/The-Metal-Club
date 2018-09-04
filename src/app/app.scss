@@ -56,8 +56,16 @@ ion-icon {
     }
   
     &[class*="custom-trophy"] {
-      mask-image: url(../assets/icon/trophy-variant.svg);
-    }  
+        mask-image: url(../assets/icon/trophy-variant.svg);
+    }
+    
+    &[class*="custom-spotify"] {
+        mask-image: url(../assets/icon/Antu_spotify.svg);
+    }
+
+    &[class*="custom-palheta"] {
+        mask-image: url(../assets/icon/palheta.svg);
+    } 
   
   }
 

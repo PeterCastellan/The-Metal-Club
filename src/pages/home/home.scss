@@ -1,37 +1,24 @@
 page-home {
-    .inner {
-        width: 1000px;
-        height: 200px;
-        ion-card {
-            display: table-cell;
-            border: solid 1px #ccc;
-        }
-    }
-
     img {
-        max-width: 100px;
-        max-height: 100px;
-        padding: 2px;
+        width: 100px;
+        height: 100px;
+        padding: 1px;
     }
 
-    .card-content-md {
-        padding: 0;
-    }
-
-    .card-title-md {
-        display: block;
-        font-size: 2rem;
-        line-height: 1.2;
-        color: yellow;
-        margin: 2px 0;
-        padding: 5px;
-    }
-
-    .card-md p {
-        margin: 2px 2px;
-        font-size: 1.4rem;
-        font-weight: normal;
-        line-height: 1.5;
-        color: #222;
+    .scrolling-wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        height: 150px;
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .card {
+          display: inline-block;
+          width: 100px;
+          height: 150px;
+          margin-right: 10px;
+        }
     }
 }
