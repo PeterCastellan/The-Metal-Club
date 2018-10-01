@@ -23,6 +23,8 @@ import { MyFriendsPage } from '../pages/my-friends/my-friends';
 import { AlbumPage } from '../pages/album/album';
 import { BandPage } from '../pages/band/band';
 import { MyRankPage } from '../pages/my-rank/my-rank';
+import { AlbumServiceProvider } from '../providers/album-service';
+//import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { MyRankPage } from '../pages/my-rank/my-rank';
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     HttpClientModule
+    //HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +74,9 @@ import { MyRankPage } from '../pages/my-rank/my-rank';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AlbumServiceProvider,
+    AlbumServiceProvider
   ]
 })
 export class AppModule {}

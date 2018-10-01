@@ -1,5 +1,7 @@
 {
   "name": "theMetalClub",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
