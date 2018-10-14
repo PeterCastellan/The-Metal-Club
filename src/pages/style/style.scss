@@ -1,4 +1,4 @@
-page-band {
+page-style {
     .scrolling-wrapper {
         overflow-x: scroll;
         overflow-y: hidden;
@@ -14,22 +14,5 @@ page-band {
           height: 150px;
           margin-right: 10px;
         }
-    }
-
-    .iconDetails {
-        margin-left:2%;
-        float:left; 
-        height:40px;
-        width:40px;	
-    } 
-       
-    .container2 {
-        width:100%;
-        height:auto;
-        padding:1%;
-    }
-       
-    h3 {
-        margin:0px;
     }
 }

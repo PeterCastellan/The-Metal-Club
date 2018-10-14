@@ -24,7 +24,13 @@ import { AlbumPage } from '../pages/album/album';
 import { BandPage } from '../pages/band/band';
 import { MyRankPage } from '../pages/my-rank/my-rank';
 import { AlbumServiceProvider } from '../providers/album-service';
-//import { HttpModule } from '@angular/http';
+import { BandServiceProvider } from '../providers/band-service';
+import { StyleServiceProvider } from '../providers/style-service';
+import { StylePage } from '../pages/style/style';
+import { MemberServiceProvider } from '../providers/member-service';
+import { AuthServiceProvider } from '../providers/auth-service';
+import { SongServiceProvider } from '../providers/song-service';
+
 
 @NgModule({
   declarations: [
@@ -43,14 +49,14 @@ import { AlbumServiceProvider } from '../providers/album-service';
     MyFriendsPage,
     AlbumPage,
     BandPage,
-    MyRankPage
+    MyRankPage,
+    StylePage
   ],
   imports: [
     BrowserModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     HttpClientModule
-    //HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,14 +75,19 @@ import { AlbumServiceProvider } from '../providers/album-service';
     MyFriendsPage,
     AlbumPage,
     BandPage,
-    MyRankPage
+    MyRankPage,
+    StylePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AlbumServiceProvider,
-    AlbumServiceProvider
+    BandServiceProvider,
+    StyleServiceProvider,
+    MemberServiceProvider,
+    AuthServiceProvider,
+    SongServiceProvider
   ]
 })
 export class AppModule {}

@@ -1,13 +1,17 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
+  <ion-navbar color="main">
+    <ion-title text-center>Login</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <img src="../../assets/imgs/logo_tmc_header.png">
+  
+  <br>
 
   <ion-item>
     <ion-label floating>Username</ion-label>
@@ -22,5 +26,9 @@
   <br>
 
   <button ion-button full primary (click)="login()">Login</button>
+
+  <br>
+  
+  <button ion-button full primary (click)="continue()">Continue without login</button>
 
 </ion-content>

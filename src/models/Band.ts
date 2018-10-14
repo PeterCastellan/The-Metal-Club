@@ -10,13 +10,14 @@ export class Band {
     sDescricao: string
     sFonte: string
     rAverageRating: string
-    country: Country
+    country: Country = new Country()
     link: string
-    styles: Style[]
-    albums: Album[]
+    styles: Style[] = new Array<Style>()
+    albums: Album[] = new Array<Album>()
     rRankingGeral: number
+    serial: string
 
     constructor() {
-        
+    
     }
 }
