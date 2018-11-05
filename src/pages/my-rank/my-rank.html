@@ -16,32 +16,16 @@
 <ion-content padding>
 
     <div style="margin: 0 auto; width: 80px; margin-top: 20px">
-        <p class="circulo">#25</p>
+        <p class="circulo">#{{user.ranking}}</p>
       </div>
-      <h1 text-center>Danilo Concilio</h1>
+      <h1 text-center>{{user.sName}}</h1>
     
       <br>
     
-      <ion-list>
-        <ion-item>
+      <ion-list *ngIf="user.styleRanking">
+        <ion-item *ngFor="let style of rankings">
           <ion-icon name="custom-trophy" item-start></ion-icon>
-          #6 Hard Rock & AOR
-        </ion-item>
-        <ion-item>
-          <ion-icon name="custom-trophy" item-start></ion-icon>
-          #6 Hard Rock & AOR
-        </ion-item>
-        <ion-item>
-          <ion-icon name="custom-trophy" item-start></ion-icon>
-          #6 Hard Rock & AOR
-        </ion-item>
-        <ion-item>
-          <ion-icon name="custom-trophy" item-start></ion-icon>
-          #6 Hard Rock & AOR
-        </ion-item>
-        <ion-item>
-          <ion-icon name="custom-trophy" item-start></ion-icon>
-          #6 Hard Rock & AOR
+          #{{style.position}} {{style.name}}
         </ion-item>
       </ion-list>
     

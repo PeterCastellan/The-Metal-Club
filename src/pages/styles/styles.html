@@ -18,7 +18,7 @@
     <ion-row>
       <ion-col *ngFor="let style of list_styles">
         <div class="style-card" (click)="openStyle(style)">
-          <img [src]="style.sImagem"/>
+          <img style="width: 100px; height: 110px;" [src]="style.sImagem"/>
           <h2 text-center class="style.title">{{ style.sNome }}</h2>
         </div>
       </ion-col>

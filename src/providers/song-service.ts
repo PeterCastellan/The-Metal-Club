@@ -20,4 +20,8 @@ export class SongServiceProvider {
     return this.http.post<Song[]>(this.baseURL + "/index.php", { "band": bandId, "page": page, "order": order, "count": 20, "shouldIncludeAlbumName": shouldIncludeAlbumName })
   }
 
+  searchFor(name: string, page: number) {
+    return this.http.post<Song[]>(this.baseURL+"/services/SongService.php", "song="+encodeURI(name)+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+  }
+
 }

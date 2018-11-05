@@ -9,34 +9,30 @@
 
 <ion-content padding>
 
-  <ion-fab top right edge>
-    <button ion-fab><ion-icon class="fab-icon" name="person-add"></ion-icon></button>
-  </ion-fab>
+  <!--
+    <ion-fab top right edge>
+      <button ion-fab><ion-icon class="fab-icon" name="person-add"></ion-icon></button>
+    </ion-fab>
+  -->
 
   <ion-item>
     <ion-avatar>
-      <img src="assets/imgs/profile_image.png" />
+      <img [src]="user.sAvatar" />
     </ion-avatar>
-    <h1>Danilo Concilio</h1>
-    <p>Brazil, Male, 46 years</p>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>
-            <p class="badge-count">
-              <img src="assets/icon/badge_silver.png" /> 3
-            </p>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="container">
-            <p class="badge-count">
-              <img src="assets/icon/badge_bronze.png" /> 10
-            </p>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <h1>{{ user.sName }}</h1>
+    <ul class="member-characteristics">
+      <li text-center *ngIf="user.fSex == 1">Male</li>
+      <li text-center *ngIf="user.fSex == 2">Female</li>
+      <li text-center *ngIf="user.dtBirthday && getMemberAge(user) < 100">{{getMemberAge(user)}} years</li>
+      <li text-center *ngIf="user.idADMPais">{{getCountry(user.idADMPais)}}</li>
+    </ul>
+
+    <div class="member_medals">
+      <span *ngFor="let medal of medalsCount">
+        <img src="./assets/img/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
+        {{medal.number}}
+      </span>
+    </div>
 
     <ion-grid>
       <ion-row>
@@ -105,7 +101,8 @@
       <div>
         <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
         <div class="song-info">
-          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR RATE:
+          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR
+          RATE:
           9.86
         </div>
       </div>
@@ -116,7 +113,8 @@
       <div>
         <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
         <div class="song-info">
-          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR RATE:
+          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR
+          RATE:
           9.86
         </div>
       </div>
@@ -127,7 +125,8 @@
       <div>
         <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
         <div class="song-info">
-          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR RATE:
+          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR
+          RATE:
           9.86
         </div>
       </div>

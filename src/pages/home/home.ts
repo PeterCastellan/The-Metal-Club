@@ -92,22 +92,6 @@ export class HomePage {
 
   }
 
-  teste1() {
-    console.log("Card numero 1");
-  }
-
-  teste2() {
-    console.log("Card numero 2");
-  }
-
-  teste3() {
-    console.log("Card numero 3");
-  }
-
-  teste4() {
-    console.log("Card numero 4");
-  }
-
   openAlbum(album) {
     this.navCtrl.push(AlbumPage, album);
   }

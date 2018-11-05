@@ -9,23 +9,25 @@
 
 
 <ion-content padding>
-  <img src="../../assets/imgs/eternity-600x591.png" class="center">
-  <h2 text-center>If Eternity Should Fail</h2>
-  <p text-center style="padding: 0px;">Iron Maiden</p>
-  <p text-center style="padding: 0px;">14:56 - 11 songs - 2015</p>
-  <p text-center style="padding: 0px;">#1 General      #1Heavy Metal</p>
-  <p text-center style="padding: 0px;">Score: 9.86       YOUR RATE: 9.86</p>
+  <img [src]="album.sImagem" class="center" style="width: 200px; height: 200px">
+  <h2 text-center>{{album.sNome}}</h2>
+  <p text-center style="padding: 0px;">{{album.band.sNome}}</p>
+  <p text-center style="padding: 0px;">{{getAlbumSize()}} - {{album.songs.length}} songs - {{album.dtDataLancamento}}</p>
+  <p text-center style="padding: 0px;">#{{album.rPosicaoRankingGeral}} General</p>
+  <p text-center style="padding: 0px;" *ngFor="let style of album.band.styles">#{{style.position}} {{style.sNome}}</p>
+  <p text-center style="padding: 0px;">Score: {{trucateFloatNumber(album.rAverageRating)}}</p>
+  <p text-center style="padding: 0px;">YOUR RATE: {{trucateFloatNumber(album.userRating)}}</p>
   <br>
   <h3>Songs</h3>
   <ion-list>
-    <ion-item class="item-song">
+    <ion-item class="item-song" *ngFor="let song of list_songs">
       <div>
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
+        <img [src]="album.sImagem" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
         <div class="song-info">
-          If Eternity Should Fail <br>
-          3:56 <br>
-          Score: 9.34 <br>
-          YOUR RATE: 9.86
+          {{song.sNome}} <br>
+          {{getSize(song.rDuracao)}}<br>
+          Score: {{trucateFloatNumber(song.rAverageRating)}} <br>
+          YOUR RATE: {{trucateFloatNumber(song.userRating)}}
         </div>
       </div>
       <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>

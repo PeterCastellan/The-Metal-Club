@@ -14,12 +14,57 @@
 
 
 <ion-content padding>
-  <ion-searchbar></ion-searchbar>
-  <div align="center" class="container">
+
+  <ion-searchbar [(ngModel)]="searchQuery" (change)="onInput($event)"></ion-searchbar>
+  <div *ngIf="!searchResult" align="center" class="container">
     <img src="assets/icon/magnify.png">
     <p>Search in
       <br>
       The Metal Club</p>
+  </div>
+
+  <div *ngIf="searchResult">
+    <br>
+    <h2>Bands</h2>
+    <div class="scrolling-wrapper">
+      <div class="card" *ngFor="let band of list_bands" (click)="openBand(band)">
+        <img [src]="band.sImagem" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+        <h2 class="bandRank">#{{ band.serial }}</h2>
+        <p class="bandName">{{ band.sNome }}</p>
+      </div>
+    </div>
+
+    <h2>Albums</h2>
+    <div class="scrolling-wrapper-album">
+      <div class="card-album" *ngFor="let album of list_albums" (click)="openAlbum(album)">
+        <img [src]="album.sImagem" style="width: 100px; height: 100px;" />
+        <h2 class="albumRank">#{{ album.serial }}</h2>
+        <p class="albumName">{{ album.sNome }}</p>
+        <p class="albumBandName">{{ album.sNomeBanda }}</p>
+      </div>
+    </div>
+
+    <h2>Songs</h2>
+    <ion-list>
+      <ion-item class="item-song" *ngFor="let song of songs">
+        <div>
+          <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
+          <div class="song-info">
+            If Eternity Should Fail <br>
+            3:56 <br>
+            Score: 9.34 <br>
+            YOUR RATE: 9.86
+          </div>
+        </div>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
+        <img item-end src="../../assets/icon/spotify.png" style="width: 30px; height: 30px;">
+      </ion-item>
+    </ion-list>
   </div>
 
 </ion-content>

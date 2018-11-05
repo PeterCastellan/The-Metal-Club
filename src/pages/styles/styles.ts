@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ClassicRockPage } from '../classic-rock/classic-rock';
-import { ExtremeMetalPage } from '../extreme-metal/extreme-metal';
-import { GothicMetalPage } from '../gothic-metal/gothic-metal';
 import { StyleServiceProvider } from '../../providers/style-service';
 import { Style } from '../../models/Style';
+import { StylePage } from '../style/style';
 
 @Component({
   selector: 'page-styles',
@@ -31,21 +29,8 @@ export class StylesPage {
     )
   }
 
-  openClassicRock() {
-    this.navCtrl.push(ClassicRockPage);
-  }
-
-  openExtremeMetal() {
-    this.navCtrl.push(ExtremeMetalPage);
-  }
-
-  openGothicMetal() {
-    this.navCtrl.push(GothicMetalPage);
-  }
-
   openStyle(style) {
-    console.log(style);
-    console.log(style.sNome)
+    this.navCtrl.push(StylePage, style)
   }
   
 }

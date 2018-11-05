@@ -15,51 +15,63 @@
         </ion-avatar>
       -->
       <ion-avatar>
-        <img [src]="user.sImagem" />
+        <img [src]="user.sAvatar" />
       </ion-avatar>
       <br>
       <h1>{{ user.sName }}</h1>
-      <p>Brazil, Male, 46 years</p>
+      <ul class="member-characteristics">
+        <li text-center *ngIf="user.fSex == 1">Male</li>
+        <li text-center *ngIf="user.fSex == 2">Female</li>
+        <li text-center *ngIf="user.dtBirthday && getMemberAge(user) < 100">{{getMemberAge(user)}} years</li>
+        <li text-center *ngIf="user.idADMPais">{{getCountry(user.idADMPais)}}</li>
+      </ul>
+
+      <div class="member_medals">
+        <span *ngFor="let medal of medalsCount">
+          <img src="./assets/img/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
+          {{medal.number}}
+        </span>
+      </div>
+
+      <!--
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                <p class="badge-count">
+                  <img src="assets/icon/badge_silver.png" /> 3
+                </p>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="container">
+                <p class="badge-count">
+                  <img src="assets/icon/badge_bronze.png" /> 10
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      -->
+
       <ion-grid>
         <ion-row>
-          <ion-col>
-            <div>
-              <p class="badge-count">
-                <img src="assets/icon/badge_silver.png" /> 3
-              </p>
-            </div>
-          </ion-col>
-          <ion-col>
-            <div class="container">
-              <p class="badge-count">
-                <img src="assets/icon/badge_bronze.png" /> 10
-              </p>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      
-      <ion-grid>
-        <ion-row>
           <ion-col class="first-line">
-            <div>
-              <p>
-                <img src="assets/icon/account-multiple.png" /> 77
-              </p>
+            <div text-center style="font-size: 1.5rem; color: gray">
+              <img style="width: 24px; height: 24px;" src="assets/icon/account-multiple.png" />
+              {{user.iTotalBandasVotadas}}
             </div>
           </ion-col>
           <ion-col class="first-line">
-            <div>
-              <p>
-                <img src="assets/icon/subtraction.png" /> 208
-              </p>
+            <div text-center style="font-size: 1.5rem; color: gray">
+              <img style="width: 24px; height: 24px;" src="assets/icon/subtraction.png" />
+              {{user.iTotalAlbumVotadas}}
             </div>
           </ion-col>
           <ion-col class="first-line">
-            <div>
-              <p>
-                <img src="assets/icon/music.png" /> 2884
-              </p>
+            <div text-center style="font-size: 1.5rem; color: gray">
+              <img style="width: 24px; height: 24px;" src="assets/icon/music.png" />
+              {{user.iTotalCancaoVotadas}}
             </div>
           </ion-col>
         </ion-row>
@@ -81,25 +93,25 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      
+
       <ion-grid>
         <ion-row>
           <ion-col>
             <div class="container">
-              <button ion-button color="primary" (click)="goToMyRank()">Member #25</button>
+              <button ion-button color="primary" (click)="goToMyRank(user)">Member #{{user.ranking}}</button>
             </div>
           </ion-col>
           <ion-col>
             <div class="container">
-              <button ion-button color="primary" (click)="goToMyFriends()">My Friends</button>
+              <button ion-button color="primary" (click)="goToMyFriends(user)">My Friends</button>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
-    
+
     <h2>Rated Songs</h2>
-    
+
     <ion-list>
       <ion-item class="item-song">
         <div>
@@ -115,7 +127,7 @@
         </div>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
-      
+
       <ion-item class="item-song">
         <div>
           <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
@@ -130,7 +142,7 @@
         </div>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
-      
+
       <ion-item class="item-song">
         <div>
           <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
@@ -145,9 +157,9 @@
         </div>
         <ion-icon name="arrow-forward" item-end></ion-icon>
       </ion-item>
-      
+
     </ion-list>
-    
+
     <h2>Highly Rated</h2>
     <div class="scrolling-wrapper">
       <div class="card" (click)="openBand()">
@@ -177,8 +189,8 @@
       </div>
     </div>
   </div>
-  </ion-content>
-  
-  <div *ngIf="!isUserLogged">
-    <p>Não está logado!</p>
-  </div>
+</ion-content>
+
+<div *ngIf="!isUserLogged">
+  <p>Não está logado!</p>
+</div>

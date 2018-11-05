@@ -16,12 +16,8 @@ export class AlbumServiceProvider {
     console.log('Hello AlbumServiceProvider Provider');
   }
 
-  getAlbumWithSongs() {
-    return this.http.get(this.baseURL + 'getWithSongs.php?id=5853');
-
-    //return this.http.get(this.baseURL + 'getWithSongs.php?id=5853', this.httpOptions);
-
-    //return this.http.get('https://api.themoviedb.org/3/movie/top_rated?api_key=e85d4943b7835e63751a73a7234ce279');
+  getAlbumWithSongs(id) {
+    return this.http.get<Album>(this.baseURL +"/getWithSongs.php?id="+id);
   }
 
   getTopAlbums() {
@@ -31,5 +27,10 @@ export class AlbumServiceProvider {
   getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null) {
     return this.http.post<Album[]>(this.baseURL + "/index.php", { "band": bandId, "order": order, "count": 20, "page": page, "style": styleId});
   }
+
+  searchFor(name: string, page: number) {
+    return this.http.post<Album[]>(this.baseURL+"/services/AlbumService.php", "album_name="+name+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+  }
+
 
 }

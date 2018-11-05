@@ -31,4 +31,8 @@ export class BandServiceProvider {
     return this.http.get<Band>("https://api.themetalclub.com/api/band/get.php?id="+bandId);
   }
 
+  searchFor(name: string, page: number) {
+    return this.http.post<Band[]>(this.baseURL+"/services/BandService.php", "name="+encodeURI(name)+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+  }
+
 }

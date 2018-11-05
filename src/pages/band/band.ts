@@ -31,7 +31,6 @@ export class BandPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BandPage');
     this.id = this.navParams.get('id');
-    //console.log("O ID QUE PEGOU É: " + id)
     console.log(this.id)
 
     /*

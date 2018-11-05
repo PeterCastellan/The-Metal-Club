@@ -7,7 +7,7 @@ export class Song {
     dtGravacao: string
     iPosicao: string
     rPosicaoRankingGeral: number
-    
+ 
     constructor() {
         
     }

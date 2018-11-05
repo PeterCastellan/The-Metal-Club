@@ -14,10 +14,7 @@ import { SearchPage } from '../pages/search/search';
 import { ForYouPage } from '../pages/for-you/for-you';
 import { ProfilePage } from '../pages/profile/profile';
 import { LoginPage } from '../pages/login/login';
-import { ClassicRockPage } from '../pages/classic-rock/classic-rock';
 import { MemberPage } from '../pages/member/member';
-import { ExtremeMetalPage } from '../pages/extreme-metal/extreme-metal';
-import { GothicMetalPage } from '../pages/gothic-metal/gothic-metal';
 import { HttpClientModule } from '@angular/common/http';
 import { MyFriendsPage } from '../pages/my-friends/my-friends';
 import { AlbumPage } from '../pages/album/album';
@@ -30,6 +27,7 @@ import { StylePage } from '../pages/style/style';
 import { MemberServiceProvider } from '../providers/member-service';
 import { AuthServiceProvider } from '../providers/auth-service';
 import { SongServiceProvider } from '../providers/song-service';
+import { CountryServiceProvider } from '../providers/country-service';
 
 
 @NgModule({
@@ -42,10 +40,7 @@ import { SongServiceProvider } from '../providers/song-service';
     StylesPage,
     TabsPage,
     LoginPage,
-    ClassicRockPage,
     MemberPage,
-    ExtremeMetalPage,
-    GothicMetalPage,
     MyFriendsPage,
     AlbumPage,
     BandPage,
@@ -68,10 +63,7 @@ import { SongServiceProvider } from '../providers/song-service';
     StylesPage,
     TabsPage, 
     LoginPage, 
-    ClassicRockPage,
     MemberPage,
-    ExtremeMetalPage,
-    GothicMetalPage,
     MyFriendsPage,
     AlbumPage,
     BandPage,
@@ -87,7 +79,8 @@ import { SongServiceProvider } from '../providers/song-service';
     StyleServiceProvider,
     MemberServiceProvider,
     AuthServiceProvider,
-    SongServiceProvider
+    SongServiceProvider,
+    CountryServiceProvider
   ]
 })
 export class AppModule {}

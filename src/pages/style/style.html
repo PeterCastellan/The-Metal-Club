@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="main">
-    <ion-title>Classic Rock</ion-title>
+    <ion-title>{{style.sNome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 <ion-content padding>
 
   <div>
-    <img style="vertical-align:middle" [src]="style.sImagem">
+    <img style="vertical-align:middle; width: 150px; height: 150px" [src]="style.sImagem">
     <span style="font-size: 2.0rem;">{{style.sNome}}</span>
   </div>
 
@@ -30,7 +30,7 @@
     -->
 
   <br>
-  <p text-center>Classis Rock is a genre of rock that</p>
+  <p [innerHTML]="style.sDescricao"></p>
 
   <h2>Top Bands</h2>
   <div class="scrolling-wrapper">
@@ -78,7 +78,7 @@
     <div class="card" *ngFor="let album of style.topAlbums" (click)="openAlbum(album)">
       <img [src]="album.sImagem" style="width: 100px; height: 100px;"><br>
       <!--<h2 style="margin: 0px; font-size: 1.6rem">#43</h2>-->
-      <p style="margin: 0px;">{{album.sNome}}</p>
+      <p text-center style="margin: 0px;">{{album.sNome}}</p>
     </div>
     <!--
 

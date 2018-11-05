@@ -8,9 +8,9 @@ export class Album {
     sImagem: string;
     sNomeBanda: string
     dtDataLancamento: string
-    band: Band
+    band: Band = new Band()
     serial: number
-    songs: Song[]
+    songs: Song[] = new Array<Song>()
     rPosicaoRankingGeral: number
     link: string
     
