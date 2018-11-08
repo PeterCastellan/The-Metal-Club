@@ -8,6 +8,7 @@ import { MemberServiceProvider } from '../../providers/member-service';
 import { Country } from '../../models/Country';
 import { CountryServiceProvider } from '../../providers/country-service';
 import { Medal } from '../../models/Medal';
+import { Album } from '../../models/Album';
 
 @Component({
   selector: 'page-profile',
@@ -22,6 +23,7 @@ export class ProfilePage {
   public countries = new Array<Country>();
   public medals = new Array<Medal>();
   public medalsCount: any[] = []
+  public list_ratedAlbums = new Array<Album>();
 
   public user = new User();
 
@@ -60,6 +62,12 @@ export class ProfilePage {
               )
 
               this.countryService.getList().subscribe(countries => this.countries = countries)
+
+              this.memberService.getRatedAlbums(this.member.id).subscribe(
+                data => {
+                  this.list_ratedAlbums = data;
+                }
+              )
               
               //this.memberService.getUserFriends(this.memberId).subscribe(result => this.loadFriends(result))
 

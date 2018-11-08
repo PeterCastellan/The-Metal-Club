@@ -1,3 +1,52 @@
 page-for-you {
+    .youtube-button-activated {
+        background-image: url("/assets/img/icon_youtube.png");
+        width: 32px;
+        height: 26px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    
+    .youtube-button-deactivated {
+        @extend .youtube-button-activated;
+        filter: grayscale(100%);
+    }
 
+    .recommendation-song-duration {
+        font-weight: bold;
+        color: darkgray;
+    }
+
+    h1 {
+        padding-bottom: 40px;
+    }
+    
+    hr {
+        margin-top: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .recommendation-date {
+        color: darkgray;
+        font-size: 12px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    .recommendation-music-style {
+        font-size: 18px;
+        color: #0C1527;
+        font-weight: bold;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    
+    .recommendation-text-description {
+        display: block;
+        // width: $guitar-pallete-width;
+        // height: $guitar-pallete-height;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 2.5px;
+        margin-right: 2.5px;
+    }
 }

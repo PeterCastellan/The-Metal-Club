@@ -28,31 +28,10 @@
 
       <div class="member_medals">
         <span *ngFor="let medal of medalsCount">
-          <img src="./assets/img/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
+          <img src="./assets/icon/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
           {{medal.number}}
         </span>
       </div>
-
-      <!--
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <div>
-                <p class="badge-count">
-                  <img src="assets/icon/badge_silver.png" /> 3
-                </p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div class="container">
-                <p class="badge-count">
-                  <img src="assets/icon/badge_bronze.png" /> 10
-                </p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      -->
 
       <ion-grid>
         <ion-row>
@@ -110,55 +89,35 @@
       </ion-grid>
     </ion-item>
 
-    <h2>Rated Songs</h2>
+    <h2>Rated Albums</h2>
 
+    <div class="scrolling-wrapper" *ngIf="isUserLogged">
+      <div class="card" *ngFor="let album of list_ratedAlbums" (click)="openAlbum(album)">
+        <img [src]="album.sImagem" style="width: 100px; height: 100px;"><br>
+        <p class="albumName">{{album.sNome}}</p>
+        <p class="albumBandName">{{album.sNomeBanda}}</p>
+      </div>
+    </div>
+    
+    <!--
     <ion-list>
       <ion-item class="item-song">
-        <div>
-          <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
-          <div class="song-info">
-            #1 <br>
-            If Eternity Should Fail <br>
-            Iron Maiden <br>
-            11 songs - 13:40 - 2015 <br>
-            Score: 9.34 <br>
-            YOUR RATE: 9.86
+          <div>
+            <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
+            <div class="song-info">
+              #1 <br>
+              If Eternity Should Fail <br>
+              Iron Maiden <br>
+              11 songs - 13:40 - 2015 <br>
+              Score: 9.34 <br>
+              YOUR RATE: 9.86
+            </div>
           </div>
-        </div>
-        <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>
-
-      <ion-item class="item-song">
-        <div>
-          <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
-          <div class="song-info">
-            #1 <br>
-            If Eternity Should Fail <br>
-            Iron Maiden <br>
-            11 songs - 13:40 - 2015 <br>
-            Score: 9.34 <br>
-            YOUR RATE: 9.86
-          </div>
-        </div>
-        <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>
-
-      <ion-item class="item-song">
-        <div>
-          <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
-          <div class="song-info">
-            #1 <br>
-            If Eternity Should Fail <br>
-            Iron Maiden <br>
-            11 songs - 13:40 - 2015 <br>
-            Score: 9.34 <br>
-            YOUR RATE: 9.86
-          </div>
-        </div>
-        <ion-icon name="arrow-forward" item-end></ion-icon>
-      </ion-item>
-
-    </ion-list>
+          <ion-icon name="arrow-forward" item-end></ion-icon>
+        </ion-item>
+        
+      </ion-list>
+    -->
 
     <h2>Highly Rated</h2>
     <div class="scrolling-wrapper">

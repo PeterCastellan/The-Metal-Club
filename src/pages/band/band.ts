@@ -65,6 +65,7 @@ export class BandPage {
     this.songService.getSongsByBandId(1, this.id).subscribe(
       data => {
         this.songs = data
+        console.log("MUSICAAAAAAA")
         console.log(data)
       }
     )
@@ -88,7 +89,20 @@ export class BandPage {
  */
 
   openAlbum(album) {
+    console.log("AQUI: ")
+    console.log(album)
     this.navCtrl.push(AlbumPage, album)
+  }
+
+  trucateFloatNumber(number: number): string {
+    return Number(number).toFixed(2)
+  }
+
+  convertSecondsToMinutesAndSeconds(seconds: number) : string {
+    var minutes = Math.floor(seconds / 60)
+    var seconds = (seconds - minutes * 60)
+    
+    return (seconds < 10) ? `${minutes}:0${seconds}` : `${minutes}:${seconds}`
   }
 
 }

@@ -22,20 +22,32 @@ export class MemberServiceProvider {
     return this.http.get<Member[]>(this.baseURL+"/index.php");
   }
 
-  getRatedAlbums(userId) {
-    return this.http.get<Album[]>(this.baseURL+"/getRatedAlbums.php?id=" + userId);
-  }
-
   getMemberWithId(memberId: number) {
     return this.http.get<User>(this.baseURL+"/get.php?id="+memberId)
   }
 
-  getUserFriends(userId: number) {
-    return this.http.get<any>(this.baseURL+"/listFriends.php?id="+userId)
-  }
+  //getUserFriends(userId: number) {
+    //return this.http.get<any>(this.baseURL+"/listFriends.php?id="+userId)
+  //}
 
   getMemberMedals(memberId: number) {
     return this.http.get<Medal[]>(this.baseURL+"/getMedals.php?id="+memberId)
+  }
+
+  getRatedAlbums(memberId: number){
+    return this.http.get<[Album]>(this.baseURL+"/getRatedAlbums.php?id="+memberId, { withCredentials: true })
+  }
+
+  //getRatedAlbums(memberId: number, order: string){
+  //  return this.http.get<[Album]>(this.baseURL+"/getRatedAlbums.php?id="+memberId+"&order="+order, { withCredentials: true })
+  //}
+
+  getMyRecommendations() {
+    return this.http.get<any>(this.baseURL+"/getMyRecommendations.php", { withCredentials: true })
+  }
+
+  getUserFriends(userId: number) {
+    return this.http.get<any>(this.baseURL+"/listFriends.php?id="+userId, { withCredentials: true })
   }
 
 }

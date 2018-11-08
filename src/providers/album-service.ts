@@ -32,5 +32,9 @@ export class AlbumServiceProvider {
     return this.http.post<Album[]>(this.baseURL+"/services/AlbumService.php", "album_name="+name+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
   }
 
+  getIncompletedRatingAlbums() {
+    return this.http.get<Album[]>(this.baseURL+"/completeWhatYouStarted.php", { withCredentials: true })
+  }
+
 
 }

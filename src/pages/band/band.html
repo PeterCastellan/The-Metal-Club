@@ -26,25 +26,24 @@
           <h2 text-center>{{band.sNome}}</h2>
           <p text-center>{{band.country.sPais}}</p>
           <p text-center>#{{band.rRankingGeral}} General</p>
-          <!--
-            <p text-center>#1 Heavy Metal</p>
-          -->
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
   <p [innerHTML]="band.sDescricao"></p>
 
-  <div class='container2'>
-    <div>
-      <img src="../../assets/icon/Subtraction 2.png" class='iconDetails'>
+  <!--
+    <div class='container2'>
+      <div>
+        <img src="../../assets/icon/Subtraction 2.png" class='iconDetails'>
+      </div>
+      <div style='margin-left:60px;'>
+        <h3>{{band.albums.length}}</h3>
+        <div style="font-size:.6em;float:left;">albums</div>
+        <div style="float:right;font-size:.6em">0 mins ago</div>
+      </div>
     </div>
-    <div style='margin-left:60px;'>
-      <h3>{{band.albums.length}}</h3>
-      <div style="font-size:.6em;float:left;">albums</div>
-      <div style="float:right;font-size:.6em">0 mins ago</div>
-    </div>
-  </div>
+  -->
 
   <ion-grid>
     <ion-row>
@@ -90,12 +89,15 @@
   <ion-list>
     <ion-item class="item-song" *ngFor="let song of songs">
       <div>
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
+        <!--
+          <iframe id="ytplayer" style="float: left; margin-right: 16px; width: 100px; height: 100px;" type="text/html" width="100%" height="100%" [src]="youtubeVideoLink" frameborder="0">
+          </iframe>
+          <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
+        -->
         <div class="song-info">
-          If Eternity Should Fail <br>
-          3:56 <br>
-          Score: 9.34 <br>
-          YOUR RATE: 9.86
+          <b>{{song.sNome}}</b> <br>
+          {{convertSecondsToMinutesAndSeconds(song.rDuracao)}} <br>
+          Score: {{trucateFloatNumber(song.rAverageRating)}}
         </div>
       </div>
       <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
@@ -104,83 +106,8 @@
       <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
       <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
       <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
-      <img item-end src="../../assets/icon/spotify.png" style="width: 30px; height: 30px;">
+      <img item-end src="../../assets/icon/icon_youtube.png" style="width: 30px; height: 30px;">
     </ion-item>
 
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
-        <div class="song-info">
-          If Eternity Should Fail <br>
-          3:56 <br>
-          Score: 9.34 <br>
-          YOUR RATE: 9.86
-        </div>
-      </div>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
-      <img item-end src="../../assets/icon/spotify.png" style="width: 30px; height: 30px;">
-    </ion-item>
-
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
-        <div class="song-info">
-          If Eternity Should Fail <br>
-          3:56 <br>
-          Score: 9.34 <br>
-          YOUR RATE: 9.86
-        </div>
-      </div>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
-      <img item-end src="../../assets/icon/spotify.png" style="width: 30px; height: 30px;">
-    </ion-item>
-
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
-        <div class="song-info">
-          If Eternity Should Fail <br>
-          3:56 <br>
-          Score: 9.34 <br>
-          YOUR RATE: 9.86
-        </div>
-      </div>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
-      <img item-end src="../../assets/icon/spotify.png" style="width: 30px; height: 30px;">
-    </ion-item>
-
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="float: left; margin-right: 16px; width: 100px; height: 100px;" />
-        <div class="song-info">
-          If Eternity Should Fail <br>
-          3:56 <br>
-          Score: 9.34 <br>
-          YOUR RATE: 9.86
-        </div>
-      </div>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
-      <img item-end src="../../assets/icon/spotify.png" style="width: 30px; height: 30px;">
-    </ion-item>
   </ion-list>
 </ion-content>

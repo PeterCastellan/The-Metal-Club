@@ -44,7 +44,7 @@ export class LoginPage {
           this.navCtrl.push(TabsPage, this.auth)
         } 
         else {
-          console.log('Usuário ou senha inválidos!')
+          alert("Username or password incorrect");
         } 
       },
       error => {

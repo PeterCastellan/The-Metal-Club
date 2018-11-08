@@ -24,4 +24,20 @@ export class SongServiceProvider {
     return this.http.post<Song[]>(this.baseURL+"/services/SongService.php", "song="+encodeURI(name)+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
   }
 
+  getListWithBandId(bandId: number, pageNumber: number, shouldIncludeAlbumName: boolean = false) {
+    return this.http.post<Song[]>(this.baseURL+"/", {page: pageNumber, band: bandId, shouldIncludeAlbumName: shouldIncludeAlbumName});
+  }
+
+  getListWithAlbumId(albumId: string, page: number) {
+    return this.http.post<Song[]>(this.baseURL+"/services/SongService.php", "albumId="+albumId+"&shouldIncludeVideoURL=true&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+  }
+
+  getListWithStyleId(styleId: number, pageNumber: number) {
+    return this.http.get<Song[]>(this.baseURL+"/getWithStyle.php?id="+styleId+"&pageNumber="+pageNumber);
+  }
+
+  voteForSong(songId: number, grade: number) {
+    return this.http.post<any>(this.baseURL+"/services/SongService.php", "method=vote&song="+songId+"&media="+grade, this.httpOptions);
+  }
+
 }

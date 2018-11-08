@@ -19,7 +19,8 @@ export class AuthServiceProvider {
   }
 
   login(credential) {
-    return this.http.post(this.baseURL + "/index.php", credential, this.httpOptions)
+    //return this.http.post(this.baseURL + "/index.php", credential, this.httpOptions)
+    return this.http.post(this.baseURL + "/index.php", credential, { withCredentials: true })
   }
 
 /*

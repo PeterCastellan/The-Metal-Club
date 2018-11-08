@@ -26,6 +26,8 @@ export class HomePage {
   public list_styles: Style[];
   public list_members: Member[];
   public list_ratedAlbums: Album[];
+  public list_recentAlbums: Album[];
+  public list_incompleteRatings: Album[];
   public isUserLogged;
   public user = new User();
 
@@ -55,10 +57,16 @@ export class HomePage {
               this.memberService.getRatedAlbums(this.user.id).subscribe(
                 data => {
                   this.list_ratedAlbums = data;
-                  console.log("Ta aqui ó")
                   console.log(data)
                 }
               )
+
+              this.albumService.getIncompletedRatingAlbums().subscribe(
+                data => {
+                  this.list_incompleteRatings = data;
+                }
+              )
+
             }
           ); 
         }
@@ -71,7 +79,7 @@ export class HomePage {
       }
     )
 
-    this.albumService.getTopAlbums().subscribe(
+    this.albumService.getAlbums(1).subscribe(
       data=> {
         this.list_albums = data;
         console.log(this.list_albums)
@@ -89,6 +97,20 @@ export class HomePage {
         this.list_members = data;
       }
     )
+
+    this.albumService.getAlbums(1, null, "release").subscribe(
+      data => {
+        this.list_recentAlbums =  data;
+      }
+    )
+
+    if(this.isUserLogged == true) {
+      this.albumService.getIncompletedRatingAlbums().subscribe(
+        data => {
+          this.list_incompleteRatings = data;
+        }
+      )
+    }
 
   }
 
