@@ -105,4 +105,5 @@ export class BandPage {
     return (seconds < 10) ? `${minutes}:0${seconds}` : `${minutes}:${seconds}`
   }
 
+
 }

@@ -80,4 +80,13 @@ page-search {
         font-size: 1.2rem;
         text-align: center;
     }
+
+    .item-song {
+        padding-left: 0px;
+    }
+
+    ion-icon.icon.icon-md.ion-md-custom-palheta.item-icon {
+        width: 25px;
+        height: 25px;
+    }
 }

@@ -15,153 +15,78 @@
     </ion-fab>
   -->
 
-  <ion-item>
-    <ion-avatar>
-      <img [src]="user.sAvatar" />
-    </ion-avatar>
-    <h1>{{ user.sName }}</h1>
-    <ul class="member-characteristics">
-      <li text-center *ngIf="user.fSex == 1">Male</li>
-      <li text-center *ngIf="user.fSex == 2">Female</li>
-      <li text-center *ngIf="user.dtBirthday && getMemberAge(user) < 100">{{getMemberAge(user)}} years</li>
-      <li text-center *ngIf="user.idADMPais">{{getCountry(user.idADMPais)}}</li>
-    </ul>
+  <div *ngIf="isUserLogged">
+    <ion-item>
+      <ion-avatar>
+        <img [src]="user.sAvatar" />
+      </ion-avatar>
+      <br>
+      <h1>{{ user.sName }}</h1>
+      <ul class="member-characteristics">
+        <li text-center *ngIf="user.fSex == 1">Male</li>
+        <li text-center *ngIf="user.fSex == 2">Female</li>
+        <li text-center *ngIf="user.dtBirthday && getMemberAge(user) < 100">{{getMemberAge(user)}} years</li>
+        <li text-center *ngIf="user.idADMPais">{{getCountry(user.idADMPais)}}</li>
+      </ul>
 
-    <div class="member_medals">
-      <span *ngFor="let medal of medalsCount">
-        <img src="./assets/img/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
-        {{medal.number}}
-      </span>
-    </div>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col class="first-line">
-          <div>
-            <p>
-              <img src="assets/icon/account-multiple.png" /> 77
-            </p>
-          </div>
-        </ion-col>
-        <ion-col class="first-line">
-          <div>
-            <p>
-              <img src="assets/icon/subtraction.png" /> 208
-            </p>
-          </div>
-        </ion-col>
-        <ion-col class="first-line">
-          <div>
-            <p>
-              <img src="assets/icon/music.png" /> 2884
-            </p>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="next-line">
-          <p>
-            rated bands
-          </p>
-        </ion-col>
-        <ion-col class="next-line">
-          <p>
-            rated albuns
-          </p>
-        </ion-col>
-        <ion-col class="next-line">
-          <p>
-            rated songs
-          </p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <!--
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div class="container">
-            <button ion-button color="primary" (click)="goToMyRank()">Member #25</button>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="container">
-            <button ion-button color="primary" (click)="goToMyFriends()">My Friends</button>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  -->
-  </ion-item>
-
-  <h2>Rated Songs</h2>
-
-  <ion-list>
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
-        <div class="song-info">
-          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR
-          RATE:
-          9.86
-        </div>
+      <div class="member_medals">
+        <span *ngFor="let medal of medalsCount">
+          <img src="./assets/icon/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
+          {{medal.number}}
+        </span>
       </div>
-      <ion-icon name="arrow-forward" item-end></ion-icon>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col class="first-line">
+            <div text-center style="font-size: 1.5rem; color: gray">
+              <img style="width: 24px; height: 24px;" src="assets/icon/account-multiple.png" />
+              {{user.iTotalBandasVotadas}}
+            </div>
+          </ion-col>
+          <ion-col class="first-line">
+            <div text-center style="font-size: 1.5rem; color: gray">
+              <img style="width: 24px; height: 24px;" src="assets/icon/subtraction.png" />
+              {{user.iTotalAlbumVotadas}}
+            </div>
+          </ion-col>
+          <ion-col class="first-line">
+            <div text-center style="font-size: 1.5rem; color: gray">
+              <img style="width: 24px; height: 24px;" src="assets/icon/music.png" />
+              {{user.iTotalCancaoVotadas}}
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="next-line">
+            <p>
+              rated bands
+            </p>
+          </ion-col>
+          <ion-col class="next-line">
+            <p>
+              rated albuns
+            </p>
+          </ion-col>
+          <ion-col class="next-line">
+            <p>
+              rated songs
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
 
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
-        <div class="song-info">
-          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR
-          RATE:
-          9.86
-        </div>
+    <h2>Rated Albums</h2>
+
+    <div class="scrolling-wrapper" *ngIf="isUserLogged">
+      <div class="card" *ngFor="let album of list_ratedAlbums" (click)="openAlbum(album)">
+        <img [src]="album.sImagem" style="width: 100px; height: 100px;"><br>
+        <p class="albumName">{{album.sNome}}</p>
+        <p class="albumBandName">{{album.sNomeBanda}}</p>
       </div>
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
+    </div>
 
-    <ion-item class="item-song">
-      <div>
-        <img src="../../assets/imgs/eternity-600x591.png" style="float: left; margin-right: 16px; width: 115px" />
-        <div class="song-info">
-          #1 <br> If Eternity Should Fail <br> Iron Maiden <br> 11 songs - 13:40 - 2015 <br> Score: 9.34 <br> YOUR
-          RATE:
-          9.86
-        </div>
-      </div>
-      <ion-icon name="arrow-forward" item-end></ion-icon>
-    </ion-item>
-
-  </ion-list>
-
-  <h2>Highly Rated</h2>
-  <div class="scrolling-wrapper">
-    <div class="card" (click)="openBand()">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 style="margin: 0px;">#1</h2>
-      <p style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card" (click)="teste2()">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 style="margin: 0px;">#1</h2>
-      <p style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card" (click)="teste3()">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 style="margin: 0px;">#1</h2>
-      <p style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card" (click)="teste4()">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 style="margin: 0px;">#1</h2>
-      <p style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 style="margin: 0px;">#1</h2>
-      <p style="margin: 0px;">Iron Maiden</p>
-    </div>
   </div>
 
 </ion-content>

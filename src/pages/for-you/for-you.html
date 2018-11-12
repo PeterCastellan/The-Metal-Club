@@ -9,111 +9,116 @@
 
 
 <ion-content padding>
-  <div *ngIf="recommendations">
+ 
+   <div *ngIf="recommendations">
+     
+     <div *ngFor="let recommendation of recommendations">
 
-    <div *ngFor="let recommendation of recommendations">
-
-      <hr />
-
-      <div *ngFor="let rockStyle of recommendation.recommendation">
-
-        <div class="recommendation-date">{{recommendation.date}}</div>
-        <div class="recommendation-music-style">{{rockStyle.style}}</div>
-
-        <section class="my-5">
-
-          <article>
-        
-            <div class="row mb-4">
-        
-              <div class="col-2 text-label d-flex align-items-center">
-        
+       <hr />
+       
+       <div *ngFor="let rockStyle of recommendation.recommendation">
+         
+         <div class="recommendation-date">{{recommendation.date}}</div>
+         <div class="recommendation-music-style">{{rockStyle.style}}</div>
+         
+         <section class="my-5">
+           
+           <article>
+             
+             <div class="row mb-4">
+               
+               <div class="col-2 text-label d-flex align-items-center">
+                 
               </div>
-        
+              
               <div class="col-4 text-label d-flex align-items-center">
                 Song
               </div>
-        
+              
               <div class="col-2 text-label d-flex align-items-center">
                 Your rate
               </div>
-        
+              
               <div class="col-3 text-label d-flex align-items-center">
-        
+                
               </div>
-        
+              
               <div class="col-3 text-label d-flex align-items-center">
-        
+                
               </div>
-        
+              
             </div>
-        
+            
           </article>
-        
+          
           <article *ngFor="let theRecommendation of rockStyle.recommendation" class="row mb-2 mt-2">
-        
+            
             <div class="col-2">
-        
+              
               <img src="{{theRecommendation.album.sImagem}}" width="100%">
-        
+              
             </div>
-        
+            
             <div class="col-4 align-middle recommendation-center">
-        
+              
               <div>
-        
+                
                 <h6 class="recommendation-text-description">
                   <a [innerHTML]="theRecommendation.sNome" class="--color-darkblue"></a>
                 </h6>
-        
+                
                 <div class="recommendation-text-description">
                   <a href="/bands/{{theRecommendation.band.link}}" [innerHTML]="theRecommendation.band.sNome"></a> -
                   <a href="/albums/{{theRecommendation.album.link}}" [innerHTML]="theRecommendation.album.sNome"></a>
                 </div>
-        
+                
                 <div class="recommendation-text-description">
                   <small class="recommendation-song-duration">{{convertSecondsToMinutesAndSeconds(theRecommendation.rDuracao)}}</small>
                 </div>
-        
+                
               </div>
-        
+              
             </div>
-        <!--
-        
-            <div class="col-2 text-label d-flex align-items-center">
-              <div (click)="vote(i)" *ngFor="let i of availableGrades" class="guitar-pallete"></div>
-            </div>
-        
+            
+              
+              <div class="col-2 text-label d-flex align-items-center">
+                <div (click)="vote(i)" *ngFor="let i of availableGrades" class="guitar-pallete"></div>
+              </div>
+              
+              <!--
 
-          <div class="col-3 recommendation-center">
-            <app-song-player [song]="theRecommendation"></app-song-player>
-            <div *ngIf="!isShowingSongLinkFrame" class="song-options">
-              <div (click)="showSonglinkFrame()" *ngIf="theRecommendation.videoURL" class="youtube-button-activated"></div>
-              <div *ngIf="!theRecommendation.videoURL" class="youtube-button-deactivated"></div>
-            </div>
-            <div class="align-items-center" *ngIf="isShowingSongLinkFrame">
-              <iframe width="100%" height="99" [src]="songLinkSongLink" frameborder="0"
-              allowtransparency allowfullscreen></iframe>
-            </div>
-          </div>
-          
-        -->
-          
+                <div class="col-3 recommendation-center">
+                  <app-song-player [song]="theRecommendation"></app-song-player>
+                  <div *ngIf="!isShowingSongLinkFrame" class="song-options">
+                    <div (click)="showSonglinkFrame()" *ngIf="theRecommendation.videoURL" class="youtube-button-activated"></div>
+                    <div *ngIf="!theRecommendation.videoURL" class="youtube-button-deactivated"></div>
+                  </div>
+                  <div class="align-items-center" *ngIf="isShowingSongLinkFrame">
+                    <iframe width="100%" height="99" [src]="songLinkSongLink" frameborder="0"
+                    allowtransparency allowfullscreen></iframe>
+                  </div>
+                </div>
+                
+              -->
+            
+            
           </article>
-        
+          
           <hr>
-
-          <!--
+          
+          
             <div class="d-flex justify-content-end">
               <button *ngIf="false" class="tmc-invisible-btn btn-sm font-weight-bold --color-mustard">More songs +</button>
             </div>
-          -->
-        
+          
+          
         </section>
         
       </div>
-
+      
     </div>
-
+    
   </div>
+  
+
 </ion-content>

@@ -50,12 +50,12 @@
       <ion-col>
         <ion-grid>
           <ion-row>
-            <ion-col>
+            <ion-col col-auto>
               <img src="../../assets/icon/Subtraction 2.png" style="float:left">
             </ion-col>
             <ion-col>
-              <h2>{{band.albums.length}}</h2>
-              <p>albums</p>
+              <h2 class="number_title">{{band.albums.length}}</h2>
+              <p class="label_title">albums</p>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -63,12 +63,12 @@
       <ion-col>
         <ion-grid>
           <ion-row>
-            <ion-col>
+            <ion-col col-auto>
               <img src="../../assets/icon/music.png">
             </ion-col>
             <ion-col>
-              <h2>1214</h2>
-              <p>songs</p>
+              <h2 class="number_title">1214</h2>
+              <p class="label_title">songs</p>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -80,8 +80,8 @@
   <div class="scrolling-wrapper">
     <div class="card" *ngFor="let album of band.albums" (click)="openAlbum(album)">
       <img [src]="album.sImagem" style="width: 100px; height: 100px;"><br>
-      <h2 style="margin: 0px; font-size: 1.6rem">#{{album.rPosicaoRankingGeral}}</h2>
-      <p style="word-wrap: break-word; margin: 0px;">{{album.sNome}}</p>
+      <h2 text-center style="margin: 0px; font-size: 1.6rem">#{{album.rPosicaoRankingGeral}}</h2>
+      <p text-center style="word-wrap: break-word; margin: 0px;">{{album.sNome}}</p>
     </div>
   </div>
 
@@ -100,11 +100,19 @@
           Score: {{trucateFloatNumber(song.rAverageRating)}}
         </div>
       </div>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
-      <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
+      <!--
+
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+        <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
+      -->
       <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
       <img item-end src="../../assets/icon/icon_youtube.png" style="width: 30px; height: 30px;">
     </ion-item>

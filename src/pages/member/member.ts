@@ -4,6 +4,8 @@ import { MemberServiceProvider } from '../../providers/member-service';
 import { User } from '../../models/User';
 import { Country } from '../../models/Country';
 import { Medal } from '../../models/Medal';
+import { Album } from '../../models/Album';
+import { CountryServiceProvider } from '../../providers/country-service';
 
 @Component({
   selector: 'page-member',
@@ -18,11 +20,13 @@ export class MemberPage {
   public countries = new Array<Country>();
   public medals = new Array<Medal>();
   public medalsCount: any[] = []
+  public list_ratedAlbums = new Array<Album>();
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private memberService: MemberServiceProvider
+    private memberService: MemberServiceProvider,
+    private countryService: CountryServiceProvider
     ) {
   }
 
@@ -33,8 +37,24 @@ export class MemberPage {
     this.memberService.getMemberWithId(this.id).subscribe(
       data => {
         this.user = data;
+
+        this.memberService.getMemberMedals(this.user.id).subscribe(
+          data => {
+            this.setMedals(data);
+          }
+        )
+
+        this.memberService.getRatedAlbums(this.user.id).subscribe(
+          data => {
+            this.list_ratedAlbums = data;
+          }
+        )
+
       }
     )
+
+    this.countryService.getList().subscribe(countries => this.countries = countries)
+
   }
 
   getMemberAge(member: User) {

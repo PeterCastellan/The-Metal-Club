@@ -83,8 +83,8 @@ export class ProfilePage {
     this.navCtrl.push(MyRankPage, user);
   }
 
-  goToMyFriends() {
-    this.navCtrl.push(MyFriendsPage);
+  goToMyFriends(user) {
+    this.navCtrl.push(MyFriendsPage, user);
   }
 
   getMemberAge(member: User) {

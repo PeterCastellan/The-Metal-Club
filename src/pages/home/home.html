@@ -33,15 +33,18 @@
     </div>
   </div>
 
-  <h2 *ngIf="isUserLogged">Incomplete Ratings</h2>
-  <div class="scrolling-wrapper" *ngIf="isUserLogged">
+<!--
+--> 
+
+  <h2 *ngIf="isUserLogged && list_incompleteRatings">Incomplete Ratings</h2>
+  <div class="scrolling-wrapper" *ngIf="isUserLogged && list_incompleteRatings">
     <div class="card" *ngFor="let album of list_incompleteRatings" (click)="openAlbum(album)">
       <img [src]="album.sImagem" style="width: 100px; height: 100px;"><br>
       <p class="albumName">{{album.sNome}}</p>
       <p class="albumBandName">{{album.sNomeBanda}}</p>
     </div>
   </div>
-
+  
   <h2>New Releases</h2>
   <div class="scrolling-wrapper-album">
     <div class="card-album" *ngFor="let album of list_recentAlbums" (click)="openAlbum(album)">

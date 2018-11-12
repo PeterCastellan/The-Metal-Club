@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Album } from '../../models/Album';
 import { AlbumServiceProvider } from '../../providers/album-service';
 import { Song } from '../../models/Song';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SongServiceProvider } from '../../providers/song-service';
 
 @Component({
   selector: 'page-album',
@@ -17,7 +19,10 @@ export class AlbumPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private albumService: AlbumServiceProvider
+    private albumService: AlbumServiceProvider,
+    private songService: SongServiceProvider,
+    private sanitizer: DomSanitizer,
+    public toastCtrl: ToastController
   ) {
   }
 
@@ -37,6 +42,7 @@ export class AlbumPage {
         console.log("Album not found")
       }
     )
+
   }
 
   testando() {
@@ -69,6 +75,24 @@ export class AlbumPage {
     var seconds = value - minutes * 60;
 
     return seconds < 10 ? `${minutes}m0${seconds}s` : `${minutes}m${seconds}s`
+  }
+
+  showToast(musica:string, nota: string) {
+    let toast = this.toastCtrl.create({
+      message: "You have voted " + nota + " to " + musica,
+      duration: 2000,
+      position: "top"
+    });
+
+    toast.present(toast);
+  }
+
+  voteForSong(id, nota, musica) {
+    this.songService.voteForSong(id, nota).subscribe(
+      data => {
+        this.showToast(musica, nota);
+      }
+    )
   }
 
 

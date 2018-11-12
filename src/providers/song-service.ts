@@ -36,8 +36,8 @@ export class SongServiceProvider {
     return this.http.get<Song[]>(this.baseURL+"/getWithStyle.php?id="+styleId+"&pageNumber="+pageNumber);
   }
 
-  voteForSong(songId: number, grade: number) {
-    return this.http.post<any>(this.baseURL+"/services/SongService.php", "method=vote&song="+songId+"&media="+grade, this.httpOptions);
+  voteForSong(songId: number, vote: number) {
+    return this.http.post<any>(this.baseURL+"/services/SongService.php", "method=vote&song="+songId+"&media="+vote, this.httpOptions);
   }
 
 }

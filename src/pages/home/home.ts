@@ -27,7 +27,7 @@ export class HomePage {
   public list_members: Member[];
   public list_ratedAlbums: Album[];
   public list_recentAlbums: Album[];
-  public list_incompleteRatings: Album[];
+  public list_incompleteRatings =  new Array<Album>();
   public isUserLogged;
   public user = new User();
 
@@ -126,5 +126,6 @@ export class HomePage {
     console.log("ISSO É O QUE TA SENDO PASSADO: " + band)
     this.navCtrl.push(BandPage, band);
   }
+
 
 }

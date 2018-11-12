@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { MemberPage } from '../member/member';
 import { MemberServiceProvider } from '../../providers/member-service';
 import { User } from '../../models/User';
+import { CountryServiceProvider } from '../../providers/country-service';
+import { Country } from '../../models/Country';
 
 @Component({
   selector: 'page-my-friends',
@@ -12,11 +14,13 @@ export class MyFriendsPage {
 
   public id;
   public friends = new Array<User>();
+  public countries = new Array<Country>();
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private memberService: MemberServiceProvider
+    private memberService: MemberServiceProvider,
+    private countryService: CountryServiceProvider
     ) {
   }
 
@@ -29,10 +33,21 @@ export class MyFriendsPage {
         this.friends = data;
       }
     )
+
+    this.countryService.getList().subscribe(countries => this.countries = countries)
   }
 
   goToMember(member) {
     this.navCtrl.push(MemberPage, member);
+  }
+
+  getCountry(countryId: number): string {
+    if (this.countries) {
+      var countries = this.countries.filter(country => +country.id == countryId)
+      return countries[0].sPais
+    } else {
+      return null;
+    }
   }
 
 
