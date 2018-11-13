@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { MemberServiceProvider } from '../../providers/member-service';
+import { SongServiceProvider } from '../../providers/song-service';
+import { BandPage } from '../band/band';
+import { AlbumPage } from '../album/album';
 
 @Component({
   selector: 'page-for-you',
@@ -15,7 +18,9 @@ export class ForYouPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private memberService: MemberServiceProvider
+    private memberService: MemberServiceProvider,
+    private songService: SongServiceProvider,
+    public toastCtrl: ToastController
     ) {
   }
 
@@ -60,5 +65,31 @@ export class ForYouPage {
 
     return resArray;
   };
+
+  showToast(musica:string, nota: string) {
+    let toast = this.toastCtrl.create({
+      message: "You have voted " + nota + " to " + musica,
+      duration: 2000,
+      position: "top"
+    });
+
+    toast.present(toast);
+  }
+
+  voteForSong(id, nota, musica) {
+    this.songService.voteForSong(id, nota).subscribe(
+      data => {
+        this.showToast(musica, nota);
+      }
+    )
+  }
+  
+  openBand(band) {
+    this.navCtrl.push(BandPage, band);
+  }
+
+  openAlbum(album) {
+    this.navCtrl.push(AlbumPage, album);
+  }
 
 }
