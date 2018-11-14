@@ -23,15 +23,17 @@ export class AuthServiceProvider {
     return this.http.post(this.baseURL + "/index.php", credential, { withCredentials: true })
   }
 
-/*
-  userisLogged() {
-    this.storage.get('userIsLogged');
+  getAuthenticatedUserData() {
+    return this.http.get(this.baseURL + '/loggedUser.php', { withCredentials: true });
   }
-*/
 
-  logout() {
+  logout2() {
     this.storage.remove('isUserLogged');
     this.storage.remove('user');
+  }
+
+  logout() {
+    return this.http.get(this.baseURL + "/logout.php", { withCredentials: true })
   }
 
 }
