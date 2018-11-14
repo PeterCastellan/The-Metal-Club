@@ -9,13 +9,11 @@
 <ion-content padding>
   <div *ngIf="isUserLogged">
     <ion-item>
-      <!--
-        <ion-avatar *ngIf="!user.sImagem">
-          <p>Não tem imagem</p>
-        </ion-avatar>
-      -->
-      <ion-avatar>
+      <ion-avatar *ngIf="user.sAvatar">
         <img [src]="user.sAvatar" />
+      </ion-avatar>
+      <ion-avatar *ngIf="!user.sAvatar">
+        <img src="../../assets/imgs/avatar.jpeg">
       </ion-avatar>
       <br>
       <h1>{{ user.sName }}</h1>
@@ -28,7 +26,7 @@
 
       <div class="member_medals">
         <span *ngFor="let medal of medalsCount">
-          <img src="./assets/icon/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
+          <img src="../../assets/icon/badges/badge_{{medal.name.toLowerCase()}}.png" title="{{medal.name}}" width=30px>
           {{medal.number}}
         </span>
       </div>
@@ -148,8 +146,9 @@
       </div>
     -->
     </div>
+    <div *ngIf="!isUserLogged">
+      <h2>You are not logged in!</h2>
+      <p>Come to our club!</p>
+    </div>
   </ion-content>
   
-<div *ngIf="!isUserLogged">
-  <p>Não está logado!</p>
-</div>
