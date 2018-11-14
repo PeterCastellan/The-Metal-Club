@@ -18,6 +18,8 @@ export class BandPage {
   public band = new Band();
   public albums = new Array<Album>();
   public songs = new Array<Song>();
+  public previewText: String;
+  isShowingFullText: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -49,6 +51,7 @@ export class BandPage {
         this.band = data
         console.log(data)
         console.log(this.band.sDescricao)
+        this.generateReadMorePreviewText();
       },
       error => {
         console.log('Band not found')
@@ -70,23 +73,8 @@ export class BandPage {
       }
     )
 
-  }
 
-  /*
-  setBand(band) {
-    this.band = band;
   }
-  */
-  /*
-  ngOnInit() {
-    this.bandService.getBand3(40).subscribe(
-      data => {
-        let teste = (data as Band)
-        this.band = teste
-      }
-    )
-  }
- */
 
   openAlbum(album) {
     console.log("AQUI: ")
@@ -98,11 +86,57 @@ export class BandPage {
     return Number(number).toFixed(2)
   }
 
-  convertSecondsToMinutesAndSeconds(seconds: number) : string {
+  convertSecondsToMinutesAndSeconds(seconds: number): string {
     var minutes = Math.floor(seconds / 60)
     var seconds = (seconds - minutes * 60)
-    
+
     return (seconds < 10) ? `${minutes}:0${seconds}` : `${minutes}:${seconds}`
+  }
+
+  generateReadMorePreviewText() {
+
+    var i = 0
+    var textLimit = 500
+    let stopAt = textLimit < this.band.sDescricao.length ? textLimit : this.band.sDescricao.length
+
+    var dontStopMeNow = false
+    var dontStopMeNowCharCount = 0
+
+    for (var i = 0; (i < stopAt) || dontStopMeNow; i++) {
+
+      var char = this.band.sDescricao.charAt(i)
+
+      switch (char) {
+        case "&":
+          dontStopMeNow = true
+        case ";":
+          dontStopMeNow = false
+        case "<":
+          dontStopMeNow = true
+        case ">":
+          dontStopMeNow = false
+      }
+
+      if (dontStopMeNow) {
+        dontStopMeNowCharCount++
+        if (dontStopMeNowCharCount == 7) {
+          dontStopMeNow = false
+          dontStopMeNowCharCount = 0
+        }
+      }
+
+      this.previewText += char
+
+    }
+
+  }
+
+  readFullText(value) {
+    if (value == true) {
+      this.isShowingFullText = true;
+    } else if (value == false) {
+      this.isShowingFullText =  false;
+    }
   }
 
 

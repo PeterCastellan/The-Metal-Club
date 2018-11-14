@@ -30,7 +30,15 @@
     -->
 
   <br>
-  <p [innerHTML]="style.sDescricao"></p>
+  <div *ngIf="!isShowingFullText">
+    <p [innerHTML]="previewText"></p>
+    <button ion-button clear color="primary" (click)="readFullText(true)">Read more...</button>
+  </div>
+
+  <div *ngIf="isShowingFullText">
+    <p [innerHTML]="style.sDescricao"></p>
+    <button ion-button clear color="primary" (click)="readFullText(false)">Read less...</button>
+  </div>
 
   <h2>Top Bands</h2>
   <div class="scrolling-wrapper">
@@ -108,8 +116,8 @@
         <p style="margin: 0px;">Power Slave</p>
       </div>
     -->
-    </div>
-    <h2>New Releases</h2>
+  </div>
+  <h2>New Releases</h2>
   <div class="scrolling-wrapper">
     <div class="card">
       <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>

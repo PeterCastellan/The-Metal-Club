@@ -68,8 +68,6 @@ export class ProfilePage {
                   this.list_ratedAlbums = data;
                 }
               )
-              
-              //this.memberService.getUserFriends(this.memberId).subscribe(result => this.loadFriends(result))
 
             }
           );
