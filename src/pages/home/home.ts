@@ -79,7 +79,7 @@ export class HomePage {
       }
     )
 
-    this.albumService.getAlbums(1).subscribe(
+    this.albumService.getAlbums(1, null, "ranking", null, 50).subscribe(
       data=> {
         this.list_albums = data;
         console.log(this.list_albums)
@@ -98,7 +98,7 @@ export class HomePage {
       }
     )
 
-    this.albumService.getAlbums(1, null, "release").subscribe(
+    this.albumService.getAlbums(1, null, "release", null, 50).subscribe(
       data => {
         this.list_recentAlbums =  data;
       }
