@@ -27,12 +27,9 @@ export class AuthServiceProvider {
     return this.http.get(this.baseURL + '/loggedUser.php', { withCredentials: true });
   }
 
-  logout2() {
+  logout() {
     this.storage.remove('isUserLogged');
     this.storage.remove('user');
-  }
-
-  logout() {
     return this.http.get(this.baseURL + "/logout.php", { withCredentials: true })
   }
 

@@ -10,6 +10,7 @@ import { CountryServiceProvider } from '../../providers/country-service';
 import { Medal } from '../../models/Medal';
 import { Album } from '../../models/Album';
 import { LoginPage } from '../login/login';
+import { AuthServiceProvider } from '../../providers/auth-service';
 
 @Component({
   selector: 'page-profile',
@@ -33,7 +34,8 @@ export class ProfilePage {
     public navParams: NavParams,
     public storage: Storage,
     private memberService: MemberServiceProvider,
-    private countryService: CountryServiceProvider
+    private countryService: CountryServiceProvider,
+    private authService: AuthServiceProvider
   ) {
   }
 
@@ -128,6 +130,14 @@ export class ProfilePage {
 
   goToLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  logout() {
+    this.authService.logout().subscribe(
+      result => {
+        this.goToLogin();
+      }
+    )
   }
 
 }
