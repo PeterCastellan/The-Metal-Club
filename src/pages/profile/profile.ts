@@ -9,6 +9,7 @@ import { Country } from '../../models/Country';
 import { CountryServiceProvider } from '../../providers/country-service';
 import { Medal } from '../../models/Medal';
 import { Album } from '../../models/Album';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-profile',
@@ -123,6 +124,10 @@ export class ProfilePage {
       resArray[i] = [ownProps[i], obj[ownProps[i]]];
 
     return resArray;
+  }
+
+  goToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 
 }

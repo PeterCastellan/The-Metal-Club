@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Song } from '../../models/Song';
 import { Album } from '../../models/Album';
@@ -15,7 +15,7 @@ import { AlbumPage } from '../album/album';
 })
 export class SearchPage {
 
-  searchQuery: any;
+  @Input searchQuery: any;
   searchResult: boolean = false;
   public list_bands: Band[];
   public list_albums: Album[];
@@ -34,41 +34,41 @@ export class SearchPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
-
+  /*
   onInput() {
     if (this.searchQuery != "") {
-      this.searchResult =  true
-
+      
       this.bandService.searchFor(this.searchQuery, 1).subscribe(
         data => {
           this.list_bands = data;
           console.log("BANDAS")
           console.log(this.list_bands)
         }
-      )
-
-      this.albumService.searchFor(this.searchQuery, 1).subscribe(
+        )
+        
+        this.albumService.searchFor(this.searchQuery, 1).subscribe(
         data=> {
           this.list_albums = data;
           console.log("ALBUMS")
           console.log(this.list_albums)
         }
-      )
-
-      this.songService.searchFor(this.searchQuery, 1).subscribe(
-        data => {
-          this.list_songs = data;
-          console.log("SONGS")
-          console.log(this.list_songs)
-        }
-      )
-
-    } else {
-      this.searchResult = false
-    }
+        )
+        
+        this.songService.searchFor(this.searchQuery, 1).subscribe(
+          data => {
+            this.list_songs = data;
+            console.log("SONGS")
+            console.log(this.list_songs)
+          }
+        )
+          
+          this.searchResult =  true
+      } else {
+        this.searchResult = false
+      }
     console.log(this.searchQuery)
   }
-
+*/
   openBand(band) {
     this.navCtrl.push(BandPage, band);
   }
@@ -97,6 +97,12 @@ export class SearchPage {
 
   openAlbum(album) {
     this.navCtrl.push(AlbumPage, album);
+  }
+
+  ngOnChanges(){
+    this.bandService.searchFor(this.searchQuery, 1).subscribe(data => this.list_bands = data)
+    this.albumService.searchFor(this.searchQuery, 1).subscribe(data => this.list_albums = data)
+    this.songService.searchFor(this.searchQuery, 1).subscribe(data => this.list_songs = data)
   }
 
 }
