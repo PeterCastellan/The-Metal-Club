@@ -15,7 +15,7 @@ import { AlbumPage } from '../album/album';
 })
 export class SearchPage {
 
-  @Input searchQuery: any;
+  searchQuery: any;
   searchResult: boolean = false;
   public list_bands: Band[];
   public list_albums: Album[];
@@ -34,7 +34,7 @@ export class SearchPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
-  /*
+  
   onInput() {
     if (this.searchQuery != "") {
       
@@ -68,7 +68,7 @@ export class SearchPage {
       }
     console.log(this.searchQuery)
   }
-*/
+
   openBand(band) {
     this.navCtrl.push(BandPage, band);
   }
@@ -99,10 +99,12 @@ export class SearchPage {
     this.navCtrl.push(AlbumPage, album);
   }
 
+  /*
   ngOnChanges(){
     this.bandService.searchFor(this.searchQuery, 1).subscribe(data => this.list_bands = data)
     this.albumService.searchFor(this.searchQuery, 1).subscribe(data => this.list_albums = data)
     this.songService.searchFor(this.searchQuery, 1).subscribe(data => this.list_songs = data)
   }
+  */
 
 }

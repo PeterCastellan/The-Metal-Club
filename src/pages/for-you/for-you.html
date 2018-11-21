@@ -17,7 +17,7 @@
       <div *ngFor="let theRecommendation of rockStyle.recommendation">
         <ion-list>
           <ion-item>
-            <img [src]="{{theRecommendation.album.sImagem}}" style="width: 100px">
+            <img src="{{theRecommendation.album.sImagem}}" style="width: 100px">
             <h2>{{theRecommendation.sNome}}</h2>
             <button ion-button clear color="primary" (click)="openBand(theRecommendation.band.id)">{{theRecommendation.band.sNome}}</button>
             <button ion-button clear color="primary" (click)="openAlbum(theRecommendation.album.id)">{{theRecommendation.album.sNome}}</button>

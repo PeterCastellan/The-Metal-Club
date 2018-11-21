@@ -104,11 +104,11 @@
           Score: {{trucateFloatNumber(song.rAverageRating)}}
         </div>
       </div>
-      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
-      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
-      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
-      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
-      <img src="../../assets/icon/guitar_pallete.svg" (click)="teste()" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="voteForSong(song.id, 2, song.sNome)" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="voteForSong(song.id, 4, song.sNome)" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="voteForSong(song.id, 6, song.sNome)" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="voteForSong(song.id, 8, song.sNome)" style="width: 30px; height: 30px;">
+      <img src="../../assets/icon/guitar_pallete.svg" (click)="voteForSong(song.id, 10, song.sNome)" style="width: 30px; height: 30px;">
       <!--
 
         <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
@@ -117,8 +117,9 @@
         <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
         <ion-icon (click)="testando()" name="custom-palheta"></ion-icon>
       -->
-      <!--<ion-icon (click)="testando()" name="custom-spotify" item-end></ion-icon>-->
-      <img item-end src="../../assets/icon/icon_youtube.png" style="width: 30px; height: 30px;">
+      <a [href]="song.videoURL">
+        <img item-end src="../../assets/icon/icon_youtube.png" style="width: 30px; height: 30px; margin-left: 80px;">
+      </a>
     </ion-item>
 
   </ion-list>

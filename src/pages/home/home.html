@@ -33,9 +33,8 @@
     </div>
   </div>
 
-<!--
---> 
 
+  
   <h2 *ngIf="isUserLogged && list_incompleteRatings">Incomplete Ratings</h2>
   <div class="scrolling-wrapper" *ngIf="isUserLogged && list_incompleteRatings">
     <div class="card" *ngFor="let album of list_incompleteRatings" (click)="openAlbum(album)">
@@ -44,6 +43,7 @@
       <p class="albumBandName">{{album.sNomeBanda}}</p>
     </div>
   </div>
+
   
   <h2>New Releases</h2>
   <div class="scrolling-wrapper-album">

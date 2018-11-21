@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { BandServiceProvider } from '../../providers/band-service';
 import { Band } from '../../models/Band';
 import { Album } from '../../models/Album';
@@ -26,7 +26,8 @@ export class BandPage {
     public navParams: NavParams,
     private bandService: BandServiceProvider,
     private albumService: AlbumServiceProvider,
-    private songService: SongServiceProvider
+    private songService: SongServiceProvider,
+    public toastCtrl: ToastController
   ) {
   }
 
@@ -137,6 +138,24 @@ export class BandPage {
     } else if (value == false) {
       this.isShowingFullText =  false;
     }
+  }
+
+  showToast(musica:string, nota: string) {
+    let toast = this.toastCtrl.create({
+      message: "You have voted " + nota + " to " + musica,
+      duration: 2000,
+      position: "top"
+    });
+
+    toast.present(toast);
+  }
+
+  voteForSong(id, nota, musica) {
+    this.songService.voteForSong(id, nota).subscribe(
+      data => {
+        this.showToast(musica, nota);
+      }
+    )
   }
 
 

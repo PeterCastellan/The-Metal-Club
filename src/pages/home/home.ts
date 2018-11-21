@@ -103,7 +103,7 @@ export class HomePage {
         this.list_recentAlbums =  data;
       }
     )
-
+      
     if(this.isUserLogged == true) {
       this.albumService.getIncompletedRatingAlbums().subscribe(
         data => {

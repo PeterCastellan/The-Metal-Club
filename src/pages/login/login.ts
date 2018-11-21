@@ -59,4 +59,8 @@ export class LoginPage {
     this.navCtrl.push(TabsPage);
   }
 
+  reload() {
+    window.location.reload();
+  }
+
 }
