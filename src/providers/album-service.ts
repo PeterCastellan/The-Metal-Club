@@ -28,10 +28,6 @@ export class AlbumServiceProvider {
     return this.http.post<Album[]>(this.baseURL, { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId});
   }
 
-  //getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null) {
-    //return this.http.post<Album[]>(this.baseURL + "/index.php", { "band": bandId, "order": order, "count": 20, "page": page, "style": styleId});
-  //}
-
   searchFor(name: string, page: number) {
     return this.http.post<Album[]>(this.baseURL+"/services/AlbumService.php", "album_name="+name+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
   }
