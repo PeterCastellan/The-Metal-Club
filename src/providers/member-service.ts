@@ -34,8 +34,8 @@ export class MemberServiceProvider {
     return this.http.get<Medal[]>(this.baseURL+"/getMedals.php?id="+memberId)
   }
 
-  getRatedAlbums(memberId: number){
-    return this.http.get<[Album]>(this.baseURL+"/getRatedAlbums.php?id="+memberId, { withCredentials: true })
+  getRatedAlbums(memberId: number, order: string){
+    return this.http.get<[Album]>(this.baseURL+"/getRatedAlbums.php?id="+memberId+"&order="+order+"&count=50", { withCredentials: true })
   }
 
   //getRatedAlbums(memberId: number, order: string){
@@ -49,5 +49,22 @@ export class MemberServiceProvider {
   getUserFriends(userId: number) {
     return this.http.get<any>(this.baseURL+"/listFriends.php?id="+userId, { withCredentials: true })
   }
+
+  // getMemberRankingWithStyle(styleId: number, pageNumber: number, filterList: Filter = new Filter()) {
+  //   console.log("index.php?id="+styleId+"&page="+pageNumber+this.stringifyFilters(filterList))
+  //   return this.http.get<User[]>(this.baseURL+"index.php?id="+styleId+"&page="+pageNumber+this.stringifyFilters(filterList));
+  // }
+
+  // private stringifyFilters(selectedFilters: Filter):String {
+  //   let filterString = '';
+  //   for (let i in selectedFilters.selectedCountries)
+  //     filterString=filterString+'&country='+i;
+  //   for (let i in selectedFilters.selectedOrder)
+  //     filterString=filterString+'&order='+i;
+  //   for (let i in selectedFilters.selectedStyles)
+  //     filterString=filterString+'&style='+i;
+
+  //   return filterString;
+  // }
 
 }

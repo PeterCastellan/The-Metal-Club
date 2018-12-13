@@ -40,4 +40,8 @@ export class SongServiceProvider {
     return this.http.post<any>(this.baseURL+"/services/SongService.php", "method=vote&song="+songId+"&media="+vote, this.httpOptions);
   }
 
+  deleteRecommendationSong(songId: number) {
+    return this.http.post<Song[]>(this.baseURL + "/services/RecommendationService.php", "method=hideSong&recommendation=" + songId, this.httpOptions);
+  }
+
 }

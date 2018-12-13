@@ -19,6 +19,10 @@ export class StyleServiceProvider {
     return this.http.get<Style[]>(this.baseURL + "/style/index.php");
   }
 
+  // getList() {
+  //   return this.http.get<[Style]>(this.baseURL+"/style/index.php")
+  // }
+
   getStyleById(styleId) {
     return this.http.get<Style>(this.baseURL + "/style/get.php?id=" + styleId);
   }

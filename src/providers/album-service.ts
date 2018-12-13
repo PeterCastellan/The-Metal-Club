@@ -25,7 +25,7 @@ export class AlbumServiceProvider {
   }
 
   getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null, numberOfItems: number = 20) {
-    return this.http.post<Album[]>(this.baseURL, { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId});
+    return this.http.post<Album[]>(this.baseURL, { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId}, { withCredentials: true });
   }
 
   searchFor(name: string, page: number) {
@@ -35,6 +35,26 @@ export class AlbumServiceProvider {
   getIncompletedRatingAlbums() {
     return this.http.get<Album[]>(this.baseURL+"/completeWhatYouStarted.php", { withCredentials: true })
   }
+
+  getJustRatedAlbums() {
+    return this.http.get<[Album]>(this.baseURL + "/justRated.php")
+  }
+
+  // getFilteredAlbums(page: number, filterList: Filter, numberOfItems: number = 50) {
+  //   return this.http.post<Album[]>(this.baseURL, "method=getList&order=rAverageRating&count=" + numberOfItems + this.stringifyFilters(filterList), httpOptions);
+  // }
+
+  // private stringifyFilters(selectedFilters: Filter):String {
+  //   let filterString = '';
+  //   for (let i in selectedFilters.selectedCountries)
+  //     filterString=filterString+'&country='+i;
+  //   for (let i in selectedFilters.selectedOrder)
+  //     filterString=filterString+'&order='+i;
+  //   for (let i in selectedFilters.selectedStyles)
+  //     filterString=filterString+'&style='+i;
+
+  //   return filterString;
+  // }
 
 
 }
