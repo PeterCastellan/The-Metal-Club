@@ -50,10 +50,12 @@ export class MemberServiceProvider {
     return this.http.get<any>(this.baseURL+"/listFriends.php?id="+userId, { withCredentials: true })
   }
 
-  // getMemberRankingWithStyle(styleId: number, pageNumber: number, filterList: Filter = new Filter()) {
+  getMemberRankingWithStyle(styleId: number, pageNumber: number) {
+  //getMemberRankingWithStyle(styleId: number, pageNumber: number, filterList: Filter = new Filter()) {
   //   console.log("index.php?id="+styleId+"&page="+pageNumber+this.stringifyFilters(filterList))
-  //   return this.http.get<User[]>(this.baseURL+"index.php?id="+styleId+"&page="+pageNumber+this.stringifyFilters(filterList));
-  // }
+     return this.http.get<User[]>(this.baseURL+"index.php?id="+styleId+"&page="+pageNumber+this.stringifyFilters(filterList));
+   }
+
 
   // private stringifyFilters(selectedFilters: Filter):String {
   //   let filterString = '';

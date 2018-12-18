@@ -37,7 +37,7 @@ export class AlbumServiceProvider {
   }
 
   getJustRatedAlbums() {
-    return this.http.get<[Album]>(this.baseURL + "/justRated.php")
+    return this.http.get<Album[]>(this.baseURL + "/justRated.php")
   }
 
   // getFilteredAlbums(page: number, filterList: Filter, numberOfItems: number = 50) {

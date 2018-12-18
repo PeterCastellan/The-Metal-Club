@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <h2 *ngIf="isUserLogged">Just Rated</h2>
+  <h2>Just Rated</h2>
   <div class="scrolling-wrapper" *ngIf="isUserLogged">
     <div class="card" *ngFor="let album of list_ratedAlbums" (click)="openAlbum(album)">
       <img [src]="album.sImagem" style="width: 100px; height: 100px;"><br>

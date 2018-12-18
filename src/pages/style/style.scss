@@ -15,4 +15,47 @@ page-style {
           margin-right: 10px;
         }
     }
+
+    .scrolling-wrapper-album {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        height: 170px;
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .card {
+            display: inline-block;
+            width: 100px;
+            height: 150px;
+            margin-right: 10px;
+        }
+        .card-album {
+            display: inline-block;
+            width: 100px;
+            height: 170px;
+            margin-right: 10px;
+        }
+    }
+
+    .albumRank {
+        margin: 0px; 
+        text-align: center;
+        color: #FFC917;
+        font-size: 1.6rem;
+    }
+
+    .albumName {
+        margin: 0px;
+        font-size: 1.4rem; 
+        text-align: center;
+    }
+
+    .albumBandName {
+        margin: 0px;
+        color: rgb(156, 154, 147);
+        font-size: 1.2rem;
+        text-align: center;
+    }
 }

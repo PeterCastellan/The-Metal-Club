@@ -54,21 +54,27 @@ export class HomePage {
             val => {
               this.user = (val as User);
               console.log(this.user)
-              this.memberService.getRatedAlbums(this.user.id).subscribe(
-                data => {
-                  this.list_ratedAlbums = data;
-                  console.log(data)
-                }
-              )
+              // this.memberService.getRatedAlbums(this.user.id).subscribe(
+              //   data => {
+              //     this.list_ratedAlbums = data;
+              //     console.log(data)
+              //   }
+              // )
 
-              this.albumService.getIncompletedRatingAlbums().subscribe(
-                data => {
-                  this.list_incompleteRatings = data;
-                }
-              )
+              // this.albumService.getIncompletedRatingAlbums().subscribe(
+              //   data => {
+              //     this.list_incompleteRatings = data;
+              //   }
+              // )
 
             }
-          ); 
+          );
+          
+          // this.albumService.getIncompletedRatingAlbums().subscribe(
+          //   data => {
+          //     this.list_incompleteRatings = data;
+          //   }
+          // );
         }
       }
     );
@@ -100,17 +106,27 @@ export class HomePage {
 
     this.albumService.getAlbums(1, null, "release", null, 50).subscribe(
       data => {
-        this.list_recentAlbums =  data;
+        this.list_recentAlbums = data;
+      }
+    )
+
+    this.albumService.getJustRatedAlbums().subscribe(
+      data => {
+        if(data.length < 2) {
+          this.list_ratedAlbums = data;
+        } else {
+          this.list_ratedAlbums = [];
+        }
       }
     )
       
-    if(this.isUserLogged == true) {
-      this.albumService.getIncompletedRatingAlbums().subscribe(
-        data => {
-          this.list_incompleteRatings = data;
-        }
-      )
-    }
+    // if(this.isUserLogged == true) {
+    //   this.albumService.getIncompletedRatingAlbums().subscribe(
+    //     data => {
+    //       this.list_incompleteRatings = data;
+    //     }
+    //   )
+    // }
 
   }
 

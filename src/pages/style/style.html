@@ -88,94 +88,24 @@
       <!--<h2 style="margin: 0px; font-size: 1.6rem">#43</h2>-->
       <p text-center style="margin: 0px;">{{album.sNome}}</p>
     </div>
-    <!--
-
-      <div class="card">
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-        <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-        <p style="margin: 0px;">Power Slave</p>
-      </div>
-      <div class="card">
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-        <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-        <p style="margin: 0px;">Power Slave</p>
-      </div>
-      <div class="card">
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-        <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-        <p style="margin: 0px;">Power Slave</p>
-      </div>
-      <div class="card">
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-        <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-        <p style="margin: 0px;">Power Slave</p>
-      </div>
-      <div class="card">
-        <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-        <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-        <p style="margin: 0px;">Power Slave</p>
-      </div>
-    -->
+   
   </div>
   <h2>New Releases</h2>
-  <div class="scrolling-wrapper">
-    <div class="card">
-      <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-      <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-      <p style="margin: 0px;">Power Slave</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-      <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-      <p style="margin: 0px;">Power Slave</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-      <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-      <p style="margin: 0px;">Power Slave</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-      <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-      <p style="margin: 0px;">Power Slave</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/6c1e8012b62a55a7dc7e856291f3eb0e.png" style="width: 100px; height: 100px;"><br>
-      <h2 style="margin: 0px; font-size: 1.6rem">#43</h2>
-      <p style="margin: 0px;">Power Slave</p>
+  <div class="scrolling-wrapper-album">
+    <div class="card-album" *ngFor="let album of list_recentAlbums" (click)="openAlbum(album)">
+      <img [src]="album.sImagem" style="width: 100px; height: 100px;" />
+      <h2 class="albumRank">#{{ album.serial }}</h2>
+      <p class="albumName">{{ album.sNome }}</p>
+      <p class="albumBandName">{{ album.sNomeBanda }}</p>
     </div>
   </div>
+
   <h2>Top Users</h2>
   <div class="scrolling-wrapper">
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 text-center style="margin: 0px;">#1</h2>
-      <p text-center style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 text-center style="margin: 0px;">#1</h2>
-      <p text-center style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 text-center style="margin: 0px;">#1</h2>
-      <p text-center style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 text-center style="margin: 0px;">#1</h2>
-      <p text-center style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 text-center style="margin: 0px;">#1</h2>
-      <p text-center style="margin: 0px;">Iron Maiden</p>
-    </div>
-    <div class="card">
-      <img src="../../assets/imgs/Image 88.png" style="width: 100px; height: 100px; border-radius: 50%;"><br>
-      <h2 text-center style="margin: 0px;">#1</h2>
-      <p text-center style="margin: 0px;">Iron Maiden</p>
+    <div class="card" *ngFor="let member of topUsers" (click)="openUser()">
+      <img [src]="member.sAvatar" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 class="memberRank">#{{member.rPosicaoRankingGeral}}</h2>
+      <p class="memberName">{{member.sName}}</p>
     </div>
   </div>
 

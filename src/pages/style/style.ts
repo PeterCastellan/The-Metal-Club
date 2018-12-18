@@ -4,6 +4,11 @@ import { StyleServiceProvider } from '../../providers/style-service';
 import { Style } from '../../models/Style';
 import { BandPage } from '../band/band';
 import { AlbumPage } from '../album/album';
+import { Album } from '../../models/Album';
+import { AlbumServiceProvider } from '../../providers/album-service';
+import { User } from '../../models/User';
+import { MemberServiceProvider } from '../../providers/member-service';
+import { MemberPage } from '../member/member';
 
 @Component({
   selector: 'page-style',
@@ -13,13 +18,17 @@ export class StylePage {
 
   id: any;
   style = new Style();
+  public list_recentAlbums = new Array<Album>();
+  public topUsers = new Array<User>();
   public previewText: String;
   public isShowingFullText: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private styleService: StyleServiceProvider
+    private styleService: StyleServiceProvider,
+    private albumService: AlbumServiceProvider,
+    private memberService: MemberServiceProvider
     ) {
   }
 
@@ -32,6 +41,18 @@ export class StylePage {
         this.style = data;
         console.log(this.style)
         this.generateReadMorePreviewText();
+
+        this.albumService.getAlbums(1, null, "release", this.style.id).subscribe(
+          data => {
+            this.list_recentAlbums = data;
+          }
+        )
+
+        this.memberService.getMemberRankingWithStyle(this.style.id, 1).subscribe(
+          data => {
+            this.topUsers = data;
+          }
+        )
       }
     )
   }
@@ -42,6 +63,10 @@ export class StylePage {
 
   openAlbum(album) {
     this.navCtrl.push(AlbumPage, album)
+  }
+
+  openMember(member) {
+    this.navCtrl.push(MemberPage, member)
   }
 
   generateReadMorePreviewText() {
