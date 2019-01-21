@@ -9,7 +9,7 @@ export class StyleServiceProvider {
     headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
   };
 
-  private baseURL = "https://api.themetalclub.com/api";
+  private baseURL = "https://api.themetalclub.com/api/style";
 
   constructor(public http: HttpClient) {
     console.log('Hello StyleServiceProvider Provider');
@@ -24,7 +24,15 @@ export class StyleServiceProvider {
   // }
 
   getStyleById(styleId) {
-    return this.http.get<Style>(this.baseURL + "/style/get.php?id=" + styleId);
+    return this.http.get<Style>(this.baseURL + "/get.php?id=" + styleId);
+  }
+
+  getList() {
+    return this.http.get<[Style]>(this.baseURL+"/")
+  }
+
+  getStyle(id: number) {
+    return this.http.get<Style>(this.baseURL+"/get.php?id="+id, { withCredentials: true })
   }
 
 }

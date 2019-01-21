@@ -25,7 +25,7 @@ export class SongServiceProvider {
   }
 
   getListWithBandId(bandId: number, pageNumber: number, shouldIncludeAlbumName: boolean = false) {
-    return this.http.post<Song[]>(this.baseURL+"/", {page: pageNumber, band: bandId, shouldIncludeAlbumName: shouldIncludeAlbumName});
+    return this.http.post<Song[]>(this.baseURL+"/", {page: pageNumber, band: bandId, shouldIncludeAlbumName: shouldIncludeAlbumName}, { withCredentials: true });
   }
 
   getListWithAlbumId(albumId: string, page: number) {
@@ -43,5 +43,17 @@ export class SongServiceProvider {
   deleteRecommendationSong(songId: number) {
     return this.http.post<Song[]>(this.baseURL + "/services/RecommendationService.php", "method=hideSong&recommendation=" + songId, this.httpOptions);
   }
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 }

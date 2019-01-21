@@ -8,8 +8,13 @@ export class AlbumServiceProvider {
 
   baseURL = "https://api.themetalclub.com/api/album";
 
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+  // };
+
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }),
+    withCredentials: true
   };
 
   constructor(public http: HttpClient) {
@@ -20,12 +25,20 @@ export class AlbumServiceProvider {
     return this.http.get<Album>(this.baseURL +"/getWithSongs.php?id="+id);
   }
 
+  getAlbum(bandId: string) {
+    return this.http.post<Album>(this.baseURL+'/getWithSongs.php?id='+bandId, {}, { withCredentials: true });
+  }
+
   getTopAlbums() {
     return this.http.post<Album[]>(this.baseURL + "/index.php", "order=rAverageRating&count=20&page=1", this.httpOptions)
   }
 
-  getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null, numberOfItems: number = 20) {
-    return this.http.post<Album[]>(this.baseURL, { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId}, { withCredentials: true });
+  getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null, numberOfItems: number = 50, countryId: number = null, memberId: number = null, filterOnlyRanked: boolean = false) {
+    return this.http.post<Album[]>(this.baseURL + "/index.php", { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId, "country": countryId, "user.id": memberId, filterOnlyRanked: filterOnlyRanked}, { withCredentials: true });
+  }
+
+  getAlbumsBy(page: number, bandId: number , order: string , styleId: number = null, numberOfItems: number = 50, memberId: number = null) {
+    return this.http.post<Album[]>(this.baseURL + "/index.php", { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId, "member": memberId}, { withCredentials: true });
   }
 
   searchFor(name: string, page: number) {
@@ -37,24 +50,7 @@ export class AlbumServiceProvider {
   }
 
   getJustRatedAlbums() {
-    return this.http.get<Album[]>(this.baseURL + "/justRated.php")
+    return this.http.get<Album[]>(this.baseURL + "/justRated.php", { withCredentials: true })
   }
-
-  // getFilteredAlbums(page: number, filterList: Filter, numberOfItems: number = 50) {
-  //   return this.http.post<Album[]>(this.baseURL, "method=getList&order=rAverageRating&count=" + numberOfItems + this.stringifyFilters(filterList), httpOptions);
-  // }
-
-  // private stringifyFilters(selectedFilters: Filter):String {
-  //   let filterString = '';
-  //   for (let i in selectedFilters.selectedCountries)
-  //     filterString=filterString+'&country='+i;
-  //   for (let i in selectedFilters.selectedOrder)
-  //     filterString=filterString+'&order='+i;
-  //   for (let i in selectedFilters.selectedStyles)
-  //     filterString=filterString+'&style='+i;
-
-  //   return filterString;
-  // }
-
 
 }
