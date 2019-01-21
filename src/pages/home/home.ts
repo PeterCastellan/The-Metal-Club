@@ -79,18 +79,18 @@ export class HomePage {
       }
     );
 
-    this.bandService.getTopBands().subscribe(
-      data=> {
-        this.list_bands = data;
-      }
-    )
+    // this.bandService.getTopBands().subscribe(
+    //   data=> {
+    //     this.list_bands = data;
+    //   }
+    // )
 
-    this.albumService.getAlbums(1, null, "ranking", null, 50).subscribe(
-      data=> {
-        this.list_albums = data;
-        console.log(this.list_albums)
-      }
-    )
+    // this.albumService.getAlbums(1, null, "ranking", null, 50).subscribe(
+    //   data=> {
+    //     this.list_albums = data;
+    //     console.log(this.list_albums)
+    //   }
+    // )
 
     this.styleService.getStyles().subscribe(
       data=> {
@@ -104,11 +104,11 @@ export class HomePage {
       }
     )
 
-    this.albumService.getAlbums(1, null, "release", null, 50).subscribe(
-      data => {
-        this.list_recentAlbums = data;
-      }
-    )
+    // this.albumService.getAlbums(1, null, "release", null, 50).subscribe(
+    //   data => {
+    //     this.list_recentAlbums = data;
+    //   }
+    // )
 
     this.albumService.getJustRatedAlbums().subscribe(
       data => {
@@ -130,6 +130,22 @@ export class HomePage {
 
   }
 
+  getTopAlbums() {
+    this.albumService.getAlbums(1, null, "ranking", null, 50, null, null, true).subscribe(albums => {
+      this.list_albums = albums
+      var i = 1
+      this.list_albums.map(album => { album.serial = i++ })
+    })
+  }
+
+  getRecentAlbums() {
+    this.albumService.getAlbums(1, null, "release", null, 50).subscribe(albums => this.list_recentAlbums = albums)
+  }
+
+  getTopBands() {
+    this.bandService.getBands(1, 50).subscribe(bands => this.list_bands = bands)
+  }
+
   openAlbum(album) {
     this.navCtrl.push(AlbumPage, album);
   }
@@ -139,7 +155,6 @@ export class HomePage {
   }
 
   openBand(band) {
-    console.log("ISSO É O QUE TA SENDO PASSADO: " + band)
     this.navCtrl.push(BandPage, band);
   }
 
