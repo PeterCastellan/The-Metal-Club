@@ -28,6 +28,8 @@ import { MemberServiceProvider } from '../providers/member-service';
 import { AuthServiceProvider } from '../providers/auth-service';
 import { SongServiceProvider } from '../providers/song-service';
 import { CountryServiceProvider } from '../providers/country-service';
+import { SearchServiceProvider } from '../providers/search-service';
+import { FloatingPlayerServiceProvider } from '../providers/floating-player-service';
 
 
 @NgModule({
@@ -80,7 +82,9 @@ import { CountryServiceProvider } from '../providers/country-service';
     MemberServiceProvider,
     AuthServiceProvider,
     SongServiceProvider,
-    CountryServiceProvider
+    CountryServiceProvider,
+    SearchServiceProvider,
+    FloatingPlayerServiceProvider
   ]
 })
 export class AppModule {}

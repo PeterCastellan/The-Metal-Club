@@ -19,10 +19,6 @@ export class StyleServiceProvider {
     return this.http.get<Style[]>(this.baseURL + "/style/index.php");
   }
 
-  // getList() {
-  //   return this.http.get<[Style]>(this.baseURL+"/style/index.php")
-  // }
-
   getStyleById(styleId) {
     return this.http.get<Style>(this.baseURL + "/get.php?id=" + styleId);
   }
@@ -30,6 +26,10 @@ export class StyleServiceProvider {
   getList() {
     return this.http.get<[Style]>(this.baseURL+"/")
   }
+
+  // getList() {
+  //   return this.http.get<Style[]>(this.baseURL+"/")
+  // }
 
   getStyle(id: number) {
     return this.http.get<Style>(this.baseURL+"/get.php?id="+id, { withCredentials: true })

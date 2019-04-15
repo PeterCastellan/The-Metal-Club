@@ -6,6 +6,15 @@
 
 <ion-content padding>
   <h2>Top Bands</h2>
+
+  <!-- <div class="band-list">
+    <div class="band-card" *ngFor="let band of list_bands" (click)="openBand(band)">
+      <img [src]="band.sImagem" style="width: 100px; height: 100px; border-radius: 50%;"><br>
+      <h2 class="bandRank">#{{ band.serial }}</h2>
+      <p class="bandName">{{ band.sNome }}</p>
+    </div>
+  </div> -->
+
   <div class="scrolling-wrapper">
     <div class="card" *ngFor="let band of list_bands" (click)="openBand(band)">
       <img [src]="band.sImagem" style="width: 100px; height: 100px; border-radius: 50%;"><br>
@@ -15,6 +24,15 @@
   </div>
 
   <h2>Top Albums</h2>
+
+  <!-- <div class="album-list">
+    <div class="album-card" *ngFor="let album of list_albums" (click)="openAlbum(album)">
+      <img [src]="album.sImagem" style="width: 100px; height: 100px;"/>
+      <h2 class="albumRank">#{{ album.serial }}</h2>
+      <p class="albumBandName">{{ album.sNomeBanda }}</p>
+    </div>
+  </div> -->
+
   <div class="scrolling-wrapper-album">
     <div class="card-album" *ngFor="let album of list_albums" (click)="openAlbum(album)">
       <img [src]="album.sImagem" style="width: 100px; height: 100px;" />
@@ -33,8 +51,6 @@
     </div>
   </div>
 
-
-  
   <h2 *ngIf="isUserLogged && list_incompleteRatings">Incomplete Ratings</h2>
   <div class="scrolling-wrapper" *ngIf="isUserLogged && list_incompleteRatings">
     <div class="card" *ngFor="let album of list_incompleteRatings" (click)="openAlbum(album)">

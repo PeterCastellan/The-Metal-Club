@@ -27,10 +27,6 @@ export class MemberServiceProvider {
     return this.http.get<User>(this.baseURL+"/get.php?id="+memberId, { withCredentials: true })
   }
 
-  //getUserFriends(userId: number) {
-    //return this.http.get<any>(this.baseURL+"/listFriends.php?id="+userId)
-  //}
-
   getMemberMedals(memberId: number) {
     return this.http.get<Medal[]>(this.baseURL+"/getMedals.php?id="+memberId)
   }
@@ -38,14 +34,6 @@ export class MemberServiceProvider {
   getRatedAlbums(memberId: number, order: string){
     return this.http.get<[Album]>(this.baseURL+"/getRatedAlbums.php?id="+memberId+"&order="+order+"&count=50", { withCredentials: true })
   }
-
-  //getRatedAlbums(memberId: number, order: string){
-  //  return this.http.get<[Album]>(this.baseURL+"/getRatedAlbums.php?id="+memberId+"&order="+order, { withCredentials: true })
-  //}
-
-  // getMyRecommendations() {
-  //   return this.http.get<any>(this.baseURL+"/getMyRecommendations.php", { withCredentials: true })
-  // }
 
   getMyRecommendations(pageNumber: number, style: number = null) {
     return this.http.get(this.baseURL+"/getMyRecommendations.php?style="+style+"&page_number="+pageNumber, { withCredentials: true })
@@ -55,13 +43,11 @@ export class MemberServiceProvider {
     return this.http.get(this.baseURL+"/listFriends.php?id="+userId, { withCredentials: true })
   }
 
-  getMemberRankingWithStyle(styleId: number, pageNumber: number) {
-  //getMemberRankingWithStyle(styleId: number, pageNumber: number, filterList: Filter = new Filter()) {
-  //   console.log("index.php?id="+styleId+"&page="+pageNumber+this.stringifyFilters(filterList))
-     return this.http.get<User[]>(this.baseURL+"index.php?id="+styleId+"&page="+pageNumber);
-   }
+  getMemberRankingWithStyle(styleId: number, pageNumber: number, country: number = null) {
+    return this.http.get<User[]>(this.baseURL+"index.php?id="+styleId+"&page="+pageNumber+"&country="+country, { withCredentials: true });
+  }
 
-   addAsFriend(memberId: number) {
+  addAsFriend(memberId: number) {
     return this.http.get(this.baseURL+"/addAsFriend.php?id="+memberId);
   }
 

@@ -79,6 +79,10 @@ export class HomePage {
       }
     );
 
+    this.getTopAlbums();
+    this.getRecentAlbums();
+    this.getTopBands();
+
     // this.bandService.getTopBands().subscribe(
     //   data=> {
     //     this.list_bands = data;
@@ -103,12 +107,6 @@ export class HomePage {
         this.list_members = data;
       }
     )
-
-    // this.albumService.getAlbums(1, null, "release", null, 50).subscribe(
-    //   data => {
-    //     this.list_recentAlbums = data;
-    //   }
-    // )
 
     this.albumService.getJustRatedAlbums().subscribe(
       data => {

@@ -28,9 +28,9 @@ export class BandServiceProvider {
     return this.http.get<Band>(this.baseURL+"/api/band/getEverything.php?id="+bandId);
   }
 
-  getBand(bandId) {
-    return this.http.get(this.baseURL+"/api/band/getEverything.php?id="+bandId, this.httpOptions);
-  }
+  // getBand(bandId) {
+  //   return this.http.get(this.baseURL+"/api/band/getEverything.php?id="+bandId, this.httpOptions);
+  // }
 
   getBand3(bandId) {
     return this.http.get<Band>("https://api.themetalclub.com/api/band/get.php?id="+bandId);
@@ -44,8 +44,12 @@ export class BandServiceProvider {
     return this.http.post<Band[]>(this.baseURL+"/services/BandService.php", "style="+styleId+"&country="+countryId+"&method=getList&order=rAverageRating&count="+numberOfItems+"&page="+page, this.httpOptions);
   }
 
-  getBands(page: number, numberOfItems: number = 50, order: string = "ranking", styleId: number = null, countryId: number = null) {
-    return this.http.post<Band[]>(this.baseURL + "/api/band/index.php", "style="+styleId+"&country="+countryId+"&method=getList&order=rAverageRating&count="+numberOfItems+"&page="+page, this.httpOptions);
+  getBands(page: number, numberOfItems: number = 50, order: string = "ranking", styleId: number = null, countryId: number = null, memberId: number = null) {
+    return this.http.post<Band[]>(this.baseURL + "/api/band/index.php", "style="+styleId+"&country="+countryId+"&method=getList&order="+order+"&count="+numberOfItems+"&page="+page+"&member="+memberId, this.httpOptions);
+  }
+
+  getBand(bandId: number) {
+    return this.http.get<Band>(this.baseURL+"/api/band/getEverything.php?id="+bandId, this.httpOptions);
   }
 
 }

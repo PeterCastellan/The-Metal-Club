@@ -33,8 +33,8 @@ export class AlbumServiceProvider {
     return this.http.post<Album[]>(this.baseURL + "/index.php", "order=rAverageRating&count=20&page=1", this.httpOptions)
   }
 
-  getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null, numberOfItems: number = 50, countryId: number = null, memberId: number = null, filterOnlyRanked: boolean = false) {
-    return this.http.post<Album[]>(this.baseURL + "/index.php", { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId, "country": countryId, "user.id": memberId, filterOnlyRanked: filterOnlyRanked}, { withCredentials: true });
+  getAlbums(page: number, bandId: number = null, order: string = "ranking", styleId: number = null, numberOfItems: number = 50, countryId: number = null, memberId: number = null, filterOnlyRanked: boolean = false, startYear: string = null, endYear: string = null) {
+    return this.http.post<Album[]>(this.baseURL + "/index.php", { "band": bandId, "order": order, "count": numberOfItems, "page": page, "style": styleId, "country": countryId, "user.id": memberId, filterOnlyRanked: filterOnlyRanked, anoInicio: startYear, anoFim: endYear }, { withCredentials: true });
   }
 
   getAlbumsBy(page: number, bandId: number , order: string , styleId: number = null, numberOfItems: number = 50, memberId: number = null) {
@@ -42,8 +42,12 @@ export class AlbumServiceProvider {
   }
 
   searchFor(name: string, page: number) {
-    return this.http.post<Album[]>(this.baseURL+"/services/AlbumService.php", "album_name="+name+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+    return this.http.post<Album[]>(this.baseURL+"/services/AlbumService.php", "album_name="+encodeURI(name)+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
   }
+
+  // searchFor(name: string, page: number) {
+  //   return this.http.post<Album[]>(this.baseURL+"/services/AlbumService.php", "album_name="+name+"&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+  // }
 
   getIncompletedRatingAlbums() {
     return this.http.get<Album[]>(this.baseURL+"/completeWhatYouStarted.php", { withCredentials: true })

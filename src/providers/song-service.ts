@@ -29,31 +29,19 @@ export class SongServiceProvider {
   }
 
   getListWithAlbumId(albumId: string, page: number) {
-    return this.http.post<Song[]>(this.baseURL+"/services/SongService.php", "albumId="+albumId+"&shouldIncludeVideoURL=true&method=getList&order=rAverageRating&count=20&page="+page, this.httpOptions);
+    return this.http.post<Song[]>(this.baseURL+"/services/SongService.php", "albumId=" + albumId + "&shouldIncludeVideoURL=true&method=getList&order=rAverageRating&count=20&page=" + page, this.httpOptions);
   }
 
   getListWithStyleId(styleId: number, pageNumber: number) {
     return this.http.get<Song[]>(this.baseURL+"/getWithStyle.php?id="+styleId+"&pageNumber="+pageNumber);
   }
 
-  voteForSong(songId: number, vote: number) {
-    return this.http.post<any>(this.baseURL+"/services/SongService.php", "method=vote&song="+songId+"&media="+vote, this.httpOptions);
+  voteForSong(songId: number, grade: number) {
+    return this.http.post<any>(this.baseURL+"/services/SongService.php", "method=vote&song=" + songId + "&media=" + grade, this.httpOptions);
   }
 
   deleteRecommendationSong(songId: number) {
     return this.http.post<Song[]>(this.baseURL + "/services/RecommendationService.php", "method=hideSong&recommendation=" + songId, this.httpOptions);
   }
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
 
 }
