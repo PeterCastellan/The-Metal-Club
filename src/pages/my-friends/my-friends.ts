@@ -13,7 +13,8 @@ import { Country } from '../../models/Country';
 export class MyFriendsPage {
 
   public id;
-  public friends = new Array<User>();
+  //public friends = new Array<User>();
+  public friends;
   public countries = new Array<Country>();
 
   constructor(
